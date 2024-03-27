@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JemberWonder - Login</title>
-    <!-- Include CSS, JavaScript, atau library lainnya di sini -->
+    <!-- Include CSS, JavaScript, atau library-->
     <style>
         .center {
             text-align: center;

@@ -12,7 +12,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('index');
 Route::post('/login', [LoginController::class, 'loginCus'])->name('loginCus');
 Route::post('/logout', [DashboardController::class, 'logout'])->name('logout');
 
-Route::post('/admin/dashboard', [DashboardController::class, 'showDashboardAdmin'])->name('dashboardadmin');
-Route::post('/customer/dashboard', [DashboardController::class, 'showDashboardCus'])->name('dashboardcustomer');
+Route::get('/admin/dashboard', [DashboardController::class, 'showDashboardAdmin'])->name('dashboardadmin');
+Route::get('/customer/dashboard', [DashboardController::class, 'showDashboardCus'])->name('dashboardcustomer');
 Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
 Route::get('/logout/confirm', [DashboardController::class, 'confirmLogout'])->name('confirmlogout');

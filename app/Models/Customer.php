@@ -13,6 +13,9 @@ class Customer extends Model
     protected $fillable = [
         'username_cus',
         'pw_cus',
+        'fullname_cus',
+        'pertanyaan',
+        'jawaban',
     ];
     public function up()
     {

@@ -14,7 +14,7 @@ class LoginController extends Controller
         return view('index');
     }
 
-        public function loginCus(Request $request)
+    public function loginCus(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'username_cus' => 'required',
@@ -25,7 +25,7 @@ class LoginController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('loginCus')->withErrors($validator)->withInput();
+            return redirect()->route('index')->withErrors($validator)->withInput();
         }
 
         $username = $request->input('username_cus');
@@ -33,14 +33,13 @@ class LoginController extends Controller
 
         $customer = customer::where('username_cus', $username)->first();
 
-        if ($customer) {
-            if (password_verify($password, $customer->pw_cus)) {
-                return redirect()->intended('/customer/dashboard');
-            } else {
-                return redirect()->route('loginCus')->withErrors(['error' => 'Username atau password salah']);
-            }
+        if (!$customer) {
+            return redirect()->route('index')->withErrors(['error' => 'Username tidak ditemukan']);
+        }
+        if ($customer->pw_cus === $password) {
+            return redirect()->intended('/customer/dashboard');
         } else {
-            return redirect()->route('loginCus')->withErrors(['error' => 'Username tidak ditemukan']);
+            return redirect()->route('index')->withErrors(['error' => 'Username atau password salah']);
         }
     }
 }
