@@ -62,6 +62,6 @@ class RegisterController extends Controller
         'jawaban' => $jawaban,
     ];
 
-    return redirect('/logincustomer')->with('success', 'Registrasi berhasil!')->with('customerBaru', $customerBaru);
+    return redirect('/logincustomer')->withErrors(['success' => 'Registrasi berhasil!']);
 }
 }

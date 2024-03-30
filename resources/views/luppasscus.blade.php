@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JemberWonder - Login Admin</title>
+    <title>JemberWonder - Lupa Password Customer</title>
     <!-- Include CSS, JavaScript, atau library-->
     <style>
         .center {
@@ -54,8 +54,8 @@
 </head>
 <body class="center">
     <div class="w-50 border rounded px-3 py-3 mx-auto">
-        <h1>Login Admin</h1>
-        <form method="POST" action="{{ route('loginAdmin') }}">
+        <h1>Lupa Password Customer</h1>
+        <form action="{{ route('customer.lupaPasswordCus') }}" method="post">
             @csrf
             @if ($errors->any())
                 <script>
@@ -65,32 +65,48 @@
                 </script>
             @endif
             <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
+                <label for="username_cus" class="form-label">Username</label>
                 <br>
-                <input type="text" name="username_admin" placeholder="Username" value="{{ old('username_admin') }}" class="form-control">
+                <input type="text" name="username_cus" placeholder="Username" value="{{ old('username_cus') }}" class="form-control">
             </div>
             <br>
             <div class="mb-3">
-                <label for="password-container" class="form-label">Password</label>
+                <label for="pertanyaan" class="form-label">Pertanyaan Keamanan</label>
                 <br>
-                <input type="password" name="pw_admin" placeholder="Password" class="form-control password-input">
+                <select name="pertanyaan" class="form-control">
+                    <option disabled selected>Pilih Pertanyaan</option>
+                    <option value="Apa makanan favoritmu?">Apa makanan favoritmu?</option>
+                    <option value="Apa minuman favoritmu?">Apa minuman favoritmu?</option>
+                    <option value="Siapa nama hewan peliharaanmu?">Siapa nama hewan peliharaanmu?</option>
+                    <option value="Apa warna favoritmu?">Apa warna favoritmu?</option>
+                    <option value="Dimana kota lahirmu?">Dimana kota lahirmu?</option>
+                </select>
+            </div>
+            <br>
+            <div class="mb-3">
+                <label for="jawaban" class="form-label">Jawaban</label>
+                <br>
+                <input type="text" name="jawaban" id="jawaban" placeholder="Jawaban" value="{{ old('jawaban') }}" class="form-control">
+            </div>
+            <br>
+            <div class="mb-3">
+                <label for="pw_cus" class="form-label">Password Baru</label>
+                <br>
+                <input type="password" name="pw_cus" id="pw_cus" placeholder="Password baru" class="form-control">
                 <button type="button" class="toggle-password btn btn-outline-primary">Show</button>
             </div>
             <br>
-            <div class="mb-3 d-grid">
-                <button type="submit" class="btn btn-primary">Login</button>
+            <div class="mb-3">
+                <label for="password_confirm" class="form-label">Konfirmasi Password Baru</label>
+                <br>
+                <input type="password" name="password_confirm" id="password_confirm" placeholder="Konfirmasi password baru" class="form-control">
+                <button type="button" class="toggle-password btn btn-outline-primary">Show</button>
             </div>
             <br>
-            <div class="mb-3">
-                <a>Jika tidak memiliki akun admin, konfirmasi kepada admin lain.</a>
-                <br>
-                <a>Lupa Password?</a>
-                <a href="{{ route('luppassadmin') }}">Klik disini.</a>
-                <br>
-                <a>Atau</a>
-                <br>
-                <a href="{{ route('indexcus') }}">Login sebagai customer.</a>
-            </div>
+            <button type="submit" class="btn btn-primary">Reset Password</button>
+            <br>
+            <br>
+            <a href="{{ route('indexcus') }}">Kembali</a>
         </form>
     </div>
     <footer class="center">
@@ -100,7 +116,7 @@
         const togglePasswordBtns = document.querySelectorAll('.toggle-password');
         togglePasswordBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                const passwordInput = btn.parentElement.querySelector('.password-input');
+                const passwordInput = btn.previousElementSibling;
                 if (passwordInput.type === 'password') {
                     passwordInput.type = 'text';
                     btn.textContent = 'Hide';

@@ -85,6 +85,9 @@
                 <a>Belum punya akun? </a>
                 <a href="{{ route('registercus') }}">Daftar di sini.</a>
                 <br>
+                <a>Lupa Password?</a>
+                <a href="{{ route('luppasscus') }}">Klik disini.</a>
+                <br>
                 <a>Atau</a>
                 <br>
                 <a href="{{ route('indexadmin') }}">Login sebagai admin.</a>
