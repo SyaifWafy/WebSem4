@@ -2,22 +2,32 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class Admin extends Model
 {
-    public function login(Request $request)
+    protected $table = 'admin';
+    protected $fillable = [
+        'username_admin',
+        'pw_admin',
+        'fullname_admin',
+        'pertanyaan',
+        'jawaban',
+    ];
+    public function up()
     {
-        $credentials = $request->only('username_admin', 'pw_admin');
+        Schema::create('admin', function (Blueprint $table) {
+            $table->string('username_admin')->unique();
+            $table->string('pw_admin');
+            $table->timestamps();
+        });
+    }
 
-        if (Auth::guard('customers')->attempt($credentials)) {
-            return redirect()->intended('/customer/dashboard');
-        } elseif (Auth::guard('admins')->attempt($credentials)) {
-            return redirect()->intended('/admin/dashboard');
-        } else {
-            return redirect()->route('login')->withInput($request->except('pw_admin'))->withErrors(['username_admin' => 'Username atau password salah']);
-        }
+    public function down()
+    {
+        Schema::dropIfExists('admin');
     }
 }

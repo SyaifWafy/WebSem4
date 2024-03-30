@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JemberWonder - Login</title>
+    <title>JemberWonder - Login Customer</title>
     <!-- Include CSS, JavaScript, atau library-->
     <style>
         .center {
@@ -54,7 +54,7 @@
 </head>
 <body class="center">
     <div class="w-50 border rounded px-3 py-3 mx-auto">
-        <h1>Login</h1>
+        <h1>Login Customer</h1>
         <form method="POST" action="{{ route('loginCus') }}">
             @csrf
             @if ($errors->any())
@@ -83,7 +83,11 @@
             <br>
             <div class="mb-3">
                 <a>Belum punya akun? </a>
-                <a href="{{ route('register') }}">Daftar di sini.</a>
+                <a href="{{ route('registercus') }}">Daftar di sini.</a>
+                <br>
+                <a>Atau</a>
+                <br>
+                <a href="{{ route('indexadmin') }}">Login sebagai admin.</a>
             </div>
         </form>
     </div>

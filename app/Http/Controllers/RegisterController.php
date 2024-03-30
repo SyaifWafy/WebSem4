@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    public function showRegistrationForm()
+    public function showRegistrationFormCus()
     {
-        return view('register');
+        return view('registercus');
     }
 
     public function tambahCustomer(Request $request)
@@ -62,6 +62,6 @@ class RegisterController extends Controller
         'jawaban' => $jawaban,
     ];
 
-    return redirect('/login')->with('success', 'Registrasi berhasil!')->with('customerBaru', $customerBaru);
+    return redirect('/logincustomer')->with('success', 'Registrasi berhasil!')->with('customerBaru', $customerBaru);
 }
 }

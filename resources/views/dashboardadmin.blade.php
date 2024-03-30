@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JemberWonder - Dashboard</title>
+    <title>JemberWonder - Dashboard Admin</title>
 </head>
 <body>
     <h1>Welcome to JemberWonder</h1>
+    <h1>Selamat datang, Admin!</h1>
 
-    <form id="logoutForm" action="{{ route('logout') }}" method="POST">
+    <form id="logoutForm" action="{{ route('logoutadmin') }}" method="POST">
         @csrf
         <button type="button" onclick="confirmLogout()">Logout</button>
     </form>

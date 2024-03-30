@@ -9,20 +9,32 @@ class DashboardController extends Controller
 {
     public function showDashboardAdmin()
     {
-        return view('dashboard');
+        return view('dashboardadmin');
     }
     public function showDashboardCus()
     {
-        return view('dashboard');
+        return view('dashboardcus');
     }
-    public function logout(Request $request)
+    public function logoutcus(Request $request)
     {
-        return redirect()->route('confirmlogout');
+        return redirect()->route('confirmlogoutcus');
     }
-    public function confirmLogout(Request $request)
+    public function confirmLogoutCus(Request $request)
     {
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/logincustomer');
+    }
+
+    public function logoutadmin(Request $request)
+    {
+        return redirect()->route('confirmlogoutadmin');
+    }
+
+    public function confirmLogoutAdmin(Request $request)
+    {
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/loginadmin');
     }
 }
