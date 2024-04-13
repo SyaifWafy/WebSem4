@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JemberWonder - Lupa Password Admin</title>
-    <!-- Include CSS, JavaScript, atau library-->
     <style>
         .center {
             text-align: center;
@@ -103,10 +102,10 @@
                 <button type="button" class="toggle-password btn btn-outline-primary">Show</button>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Reset Password</button>
+            <button type="submit" class="btn btn-primary">Konfirmasi</button>
             <br>
             <br>
-            <a href="{{ route('indexadmin') }}">Kembali</a>
+            <a href="{{ route('indexadmin') }}">Kembali ke login</a>
         </form>
     </div>
     <footer class="center">

@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LuppassController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/index', [IndexController::class, 'showIndex'])->name('index');
 
 Route::get('/register', [RegisterController::class, 'showRegistrationFormCus'])->name('registercus');
 Route::post('/tambah-customer', [RegisterController::class, 'tambahCustomer'])->name('tambahCustomer');

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JemberWonder - Register</title>
-    <!-- Include CSS, JavaScript, atau library lainnya di sini -->
     <style>
         .center {
             text-align: center;
@@ -54,7 +53,8 @@
 </head>
 <body class="center">
     <div class="w-50 border rounded px-3 py-3 mx-auto">
-        <h1>Register</h1>
+        <h1>Customer</h1>
+        <h1>Daftar</h1>
         <form action="/tambah-customer" method="POST">
             @csrf
             @if ($errors->any())
@@ -116,12 +116,11 @@
             </div>
             <br>
             <div class="mb-3 d-grid">
-                <button name="submit" type="submit" class="btn btn-primary">Register</button>
+                <button name="submit" type="submit" class="btn btn-primary">Daftar</button>
             </div>
             <br>
             <div class="mb-3">
-                <a>Sudah ada akun? </a>
-                <a href="{{ ('logincustomer') }}">Login di sini.</a>
+                <a href="{{ ('logincustomer') }}">Kembali ke login</a>
             </div>
         </form>
     </div>

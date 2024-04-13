@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JemberWonder - Login Admin</title>
-    <!-- Include CSS, JavaScript, atau library-->
     <style>
         .center {
             text-align: center;
@@ -54,7 +53,11 @@
 </head>
 <body class="center">
     <div class="w-50 border rounded px-3 py-3 mx-auto">
-        <h1>Login Admin</h1>
+        <br>
+        <a href="{{ route('indexcus') }}">Customer</a>
+        <a href="{{ route('indexadmin') }}">Admin</a>
+        <br>
+        <h1>Masuk Admin</h1>
         <form method="POST" action="{{ route('loginAdmin') }}">
             @csrf
             @if ($errors->any())
@@ -76,20 +79,18 @@
                 <input type="password" name="pw_admin" placeholder="Password" class="form-control password-input">
                 <button type="button" class="toggle-password btn btn-outline-primary">Show</button>
             </div>
+            <a href="{{ route('luppassadmin') }}">Lupa Password?</a>
+            <br>
             <br>
             <div class="mb-3 d-grid">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary">Masuk</button>
             </div>
             <br>
             <div class="mb-3">
-                <a>Jika tidak memiliki akun admin, konfirmasi kepada admin lain.</a>
+                <a>Tidak memiliki akun admin? Segera konfirmasi kepada admin lain.</a>
                 <br>
-                <a>Lupa Password?</a>
-                <a href="{{ route('luppassadmin') }}">Klik disini.</a>
                 <br>
-                <a>Atau</a>
-                <br>
-                <a href="{{ route('indexcus') }}">Login sebagai customer.</a>
+                <a href="{{ route('index') }}">Kembali</a>
             </div>
         </form>
     </div>
