@@ -11,7 +11,7 @@ class RegisterController extends Controller
 {
     public function showRegistrationFormCus()
     {
-        return view('registercus');
+        return view('customer.registercus');
     }
 
     public function tambahCustomer(Request $request)

@@ -10,12 +10,12 @@ class LuppassController extends Controller
 {
     public function showLuppassFormCus()
     {
-        return view('luppasscus');
+        return view('customer.luppasscus');
     }
 
     public function showLuppassFormAdmin()
     {
-        return view('luppassadmin');
+        return view('admin.luppassadmin');
     }
 
     public function lupaPasswordCus(Request $request)

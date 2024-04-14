@@ -9,15 +9,15 @@ class DashboardController extends Controller
 {
     public function showDashboardAdmin()
     {
-        return view('dashboardadmin');
+        return view('admin.dashboardadmin');
     }
     public function showDashboardCus()
     {
-        return view('dashboardcus');
+        return view('customer.dashboardcus');
     }
     public function logoutcus(Request $request)
     {
-        return redirect()->route('confirmlogoutcus');
+        return redirect()->route('customer.confirmlogoutcus');
     }
     public function confirmLogoutCus(Request $request)
     {

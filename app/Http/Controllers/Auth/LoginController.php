@@ -12,12 +12,12 @@ class LoginController extends Controller
 {
     public function showLoginFormCus()
     {
-        return view('indexcus');
+        return view('customer.indexcus');
     }
 
     public function showLoginFormAdmin()
     {
-        return view('indexadmin');
+        return view('admin.indexadmin');
     }
 
     public function loginCus(Request $request)
@@ -31,7 +31,7 @@ class LoginController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('indexcus')->withErrors($validator)->withInput();
+            return redirect()->route('customer.indexcus')->withErrors($validator)->withInput();
         }
 
         $username = $request->input('username_cus');
@@ -40,12 +40,12 @@ class LoginController extends Controller
         $customer = customer::where('username_cus', $username)->first();
 
         if (!$customer) {
-            return redirect()->route('indexcus')->withErrors(['error' => 'Username tidak ditemukan']);
+            return redirect()->route('customer.indexcus')->withErrors(['error' => 'Username tidak ditemukan']);
         }
         if ($customer->pw_cus === $password) {
             return redirect()->intended('/customer/dashboard');
         } else {
-            return redirect()->route('indexcus')->withErrors(['error' => 'Username atau password salah']);
+            return redirect()->route('customer.indexcus')->withErrors(['error' => 'Username atau password salah']);
         }
     }
 
@@ -60,7 +60,7 @@ class LoginController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('indexadmin')->withErrors($validator)->withInput();
+            return redirect()->route('admin.indexadmin')->withErrors($validator)->withInput();
         }
 
         $username = $request->input('username_admin');
@@ -69,12 +69,12 @@ class LoginController extends Controller
         $admin = admin::where('username_admin', $username)->first();
 
         if (!$admin) {
-            return redirect()->route('indexadmin')->withErrors(['error' => 'Username tidak ditemukan']);
+            return redirect()->route('admin.indexadmin')->withErrors(['error' => 'Username tidak ditemukan']);
         }
         if ($admin->pw_admin === $password) {
             return redirect()->intended('/admin/dashboard');
         } else {
-            return redirect()->route('indexadmin')->withErrors(['error' => 'Username atau password salah']);
+            return redirect()->route('admin.indexadmin')->withErrors(['error' => 'Username atau password salah']);
         }
     }
 }
