@@ -33,8 +33,6 @@ Route::get('/lupapasswordadmin', [LuppassController::class, 'showLuppassFormAdmi
 Route::post('/lupapasswordadmin', [LuppassController::class, 'lupaPasswordAdmin'])->name('admin.lupaPasswordAdmin');
 
 Route::get('/admin/wisata', [AdminController::class, 'showWisataAdmin'])->name('wisataadmin');
-Route::get('/admin/event', [AdminController::class, 'showEventAdmin'])->name('eventadmin');
-Route::get('/admin/pengaduan', [AdminController::class, 'showPengaduanAdmin'])->name('pengaduanadmin');
 Route::get('/admin/form-wisata', [AdminController::class, 'showFormWisataAdmin'])->name('formwisataadmin');
 Route::post('/admin/insert-wisata', [AdminController::class, 'insertWisata'])->name('tambahwisata');
 Route::get('/edit-wisata-admin/{kd_wisata}', [AdminController::class, 'showEditWisata'])->name('editWisataAdmin');
@@ -42,5 +40,10 @@ Route::put('/update-wisata-admin/{kd_wisata}', [AdminController::class, 'updateW
 Route::delete('/delete-wisata-admin/{kd_wisata}', [AdminController::class, 'deleteWisata'])->name('deleteWisataAdmin');
 Route::get('/detail-wisata/{id}', [AdminController::class, 'showDetailWisataAdmin'])->name('detailWisataAdmin');
 
+Route::get('/admin/event', [AdminController::class, 'showEventAdmin'])->name('eventadmin');
+Route::get('/admin/form-event', [AdminController::class, 'showFormEventAdmin'])->name('formeventadmin');
+Route::post('/admin/insert-event', [AdminController::class, 'insertEvent'])->name('tambahevent');
+Route::get('/detail-event/{id}', [AdminController::class, 'showDetailEventAdmin'])->name('detailEventAdmin');
 
+Route::get('/admin/pengaduan', [AdminController::class, 'showPengaduanAdmin'])->name('pengaduanadmin');
 

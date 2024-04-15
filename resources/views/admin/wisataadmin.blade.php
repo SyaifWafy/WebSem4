@@ -36,12 +36,6 @@
             @foreach($wisatas as $wisata)
             <li>
                 <a href="{{ route('detailWisataAdmin', $wisata->kd_wisata) }}">{{ $wisata->nama_wisata }}</a>
-                <a href="{{ route('editWisataAdmin', $wisata->kd_wisata) }}" class="btn btn-primary">Edit</a>
-                <form action="{{ route('deleteWisataAdmin', $wisata->kd_wisata) }}" method="POST" style="display: inline-block;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
-                </form>
             </li>
             @endforeach
         </ul>
