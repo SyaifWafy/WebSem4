@@ -44,6 +44,11 @@ Route::get('/admin/event', [AdminController::class, 'showEventAdmin'])->name('ev
 Route::get('/admin/form-event', [AdminController::class, 'showFormEventAdmin'])->name('formeventadmin');
 Route::post('/admin/insert-event', [AdminController::class, 'insertEvent'])->name('tambahevent');
 Route::get('/detail-event/{id}', [AdminController::class, 'showDetailEventAdmin'])->name('detailEventAdmin');
+Route::get('/edit-event-admin/{kd_event}', [AdminController::class, 'showEditEvent'])->name('editEventAdmin');
+Route::put('/update-event-admin/{kd_event}', [AdminController::class, 'updateEvent'])->name('updateEventAdmin');
+Route::delete('/delete-event-admin/{kd_event}', [AdminController::class, 'deleteEvent'])->name('deleteEventAdmin');
+
+
 
 Route::get('/admin/pengaduan', [AdminController::class, 'showPengaduanAdmin'])->name('pengaduanadmin');
 

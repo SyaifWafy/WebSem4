@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tambah Event</title>
+    <title>Jember Wonder - Tambah Event</title>
 </head>
 <body>
 <h2>Tambah Event Baru</h2>

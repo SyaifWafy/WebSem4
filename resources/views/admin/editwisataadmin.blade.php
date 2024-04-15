@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Wisata - JemberWonder</title>
+    <title>JemberWonder - Edit Wisata</title>
     <style>
         .form-group {
             margin-bottom: 1rem;
@@ -61,7 +61,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('wisataadmin') }}" class="btn btn-secondary">Batal</a>
+        <a href="{{ route('detailWisataAdmin', $wisata->kd_wisata) }}" class="btn btn-secondary">Batal</a>
     </form>
 </body>
 </html>

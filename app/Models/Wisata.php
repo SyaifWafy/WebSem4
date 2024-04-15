@@ -36,4 +36,8 @@ class Wisata extends Model
         'nama_wisata',
         'username_admin',
     ];
+        public function event()
+    {
+        return $this->hasMany(Event::class, 'kd_wisata');
+    }
 }

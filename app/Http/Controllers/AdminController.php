@@ -51,9 +51,9 @@ class AdminController extends Controller
         session()->flash('success', 'Data berhasil disimpan');
         return redirect()->route('wisataadmin');
     }
-    public function showDetailWisataAdmin($kd_wisata)
+        public function showDetailWisataAdmin($kd_wisata)
     {
-        $wisata = Wisata::where('kd_wisata', $kd_wisata)->first();
+        $wisata = Wisata::with('event')->where('kd_wisata', $kd_wisata)->first();
         if (!$wisata) {
             return redirect()->route('admin.wisataadmin')->with('error', 'Data tidak ditemukan');
         }
@@ -125,5 +125,42 @@ class AdminController extends Controller
             return redirect()->route('admin.eventadmin')->with('error', 'Data tidak ditemukan');
         }
         return view('admin.detaileventadmin', ['event' => $event]);
+    }
+        public function showEditEvent($kd_event)
+    {
+        $event = Event::where('kd_event', $kd_event)->firstOrFail();
+        $wisatas = Wisata::all();
+        return view('admin.editeventadmin', compact('event', 'wisatas'));
+    }
+        public function updateEvent(Request $request, $kd_event)
+    {
+        $request->validate([
+            'judul' => 'required|string|max:100',
+            'tanggal' => 'required|date',
+            'isi' => 'required|string|max:250',
+            'tempat' => 'required|string|max:100',
+            'kd_wisata' => 'required|exists:wisata,kd_wisata',
+        ]);
+        $event = Event::find($kd_event);
+        if (!$event) {
+            return redirect()->route('eventadmin')->with('error', 'Data tidak ditemukan');
+        }
+        $event->judul = $request->judul;
+        $event->tanggal = $request->tanggal;
+        $event->isi = $request->isi;
+        $event->tempat = $request->tempat;
+        $event->kd_wisata = $request->kd_wisata;
+        $event->username_admin = 'Admin';
+        $event->save();
+        return redirect()->route('detailEventAdmin', $event->kd_event)->with('success', 'Data event berhasil diupdate');
+    }
+        public function deleteEvent($kd_event)
+    {
+        $event = Event::find($kd_event);
+        if (!$event) {
+            return redirect()->route('eventadmin')->with('error', 'Event not found.');
+        }
+        $event->delete();
+        return redirect()->route('eventadmin')->with('success', 'Event deleted successfully.');
     }
 }

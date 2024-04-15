@@ -28,11 +28,29 @@
     <p><strong>Keterangan :</strong> {{ $wisata->keterangan }}</p>
     <p><strong>Kategori :</strong> {{ $wisata->kategori }}</p>
     <p><strong>Lokasi :</strong> {{ $wisata->lokasi }}</p>
+    <h2>Event</h2>
+    @if($wisata->event)
+        @if($wisata->event->isEmpty())
+            <p>Tidak ada event pada wisata ini.</p>
+        @else
+            <ul>
+                @foreach($wisata->event as $event)
+                    <li>
+                        <a href="{{ route('detailEventAdmin', $event->kd_event) }}">
+                            {{ $event->judul }} / {{ $event->tanggal }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+    @else
+        <p>Tidak ada event pada wisata ini.</p>
+    @endif
     <a href="{{ route('editWisataAdmin', $wisata->kd_wisata) }}" class="btn btn-primary">Edit</a>
     <form action="{{ route('deleteWisataAdmin', $wisata->kd_wisata) }}" method="POST" style="display: inline-block;">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
+        <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin menghapus data wisata ini?')">Delete</button>
     </form>
     <br>
     <br>

@@ -29,6 +29,7 @@
     <a href="{{ route('eventadmin') }}">Event</a>
     <a href="{{ route('pengaduanadmin') }}">Pengaduan</a>
     <br>
+    <br>
     <button class="btn btn-primary" onclick="window.location.href='{{ route('formwisataadmin') }}'">Tambah Wisata</button>
     <br>
     <div class="center">

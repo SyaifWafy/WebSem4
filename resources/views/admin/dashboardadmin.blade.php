@@ -12,6 +12,8 @@
     <a href="{{ route('wisataadmin') }}">Wisata</a>
     <a href="{{ route('eventadmin') }}">Event</a>
     <a href="{{ route('pengaduanadmin') }}">Pengaduan</a>
+    <br>
+    <br>
     <form id="logoutForm" action="{{ route('logoutadmin') }}" method="POST">
         @csrf
         <button type="button" onclick="confirmLogout()">Logout</button>
