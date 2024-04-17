@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JemberWonder - Register</title>
+    <title>JemberWonder - Daftar Customer</title>
     <style>
         .center {
             text-align: center;

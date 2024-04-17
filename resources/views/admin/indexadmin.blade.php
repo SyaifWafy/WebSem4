@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JemberWonder - Login Admin</title>
+    <title>JemberWonder - Masuk Admin</title>
     <style>
         .center {
             text-align: center;

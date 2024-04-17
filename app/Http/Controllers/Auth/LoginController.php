@@ -60,7 +60,7 @@ class LoginController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('admin.indexadmin')->withErrors($validator)->withInput();
+            return redirect()->route('indexadmin')->withErrors($validator)->withInput();
         }
 
         $username = $request->input('username_admin');
@@ -69,12 +69,12 @@ class LoginController extends Controller
         $admin = admin::where('username_admin', $username)->first();
 
         if (!$admin) {
-            return redirect()->route('admin.indexadmin')->withErrors(['error' => 'Username tidak ditemukan']);
+            return redirect()->route('indexadmin')->withErrors(['error' => 'Username tidak ditemukan']);
         }
         if ($admin->pw_admin === $password) {
             return redirect()->intended('/admin/dashboard');
         } else {
-            return redirect()->route('admin.indexadmin')->withErrors(['error' => 'Username atau password salah']);
+            return redirect()->route('indexadmin')->withErrors(['error' => 'Username atau password salah']);
         }
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Event - Admin</title>
+    <title>Detail Event - Customer</title>
     <style>
         .center {
             text-align: center;
@@ -29,14 +29,8 @@
     <p><strong>Isi :</strong> {{ $event->isi }}</p>
     <p><strong>Tempat :</strong> {{ $event->tempat }}</p>
     <p><strong>Tempat Wisata :</strong> {{ $event->wisata->nama_wisata }}</p>
-    <a href="{{ route('editEventAdmin', $event->kd_event) }}" class="btn btn-primary">Edit Event</a>
-    <form action="{{ route('deleteEventAdmin', $event->kd_event) }}" method="POST" style="display: inline-block;">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin menghapus data event ini?')">Delete Event</button>
-    </form>
     <br>
     <br>
-    <a href="{{ route('eventadmin') }}">Kembali ke Daftar Event</a>
+    <a href="{{ route('eventcustomer') }}">Kembali ke Daftar Event</a>
 </body>
 </html>

@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JemberWonder - Dashboard Customer</title>
+    <title>JemberWonder - Pengaduan Customr</title>
 </head>
 <body>
-    <h1>Welcome to JemberWonder</h1>
-    <h1>Selamat datang, Customer!</h1>
+    <h1>JemberWonder</h1>
     <a href="{{ route('dashboardcustomer') }}">Dashboard</a>
     <a href="{{ route('wisatacustomer') }}">Wisata</a>
     <a href="{{ route('eventcustomer') }}">Event</a>

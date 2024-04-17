@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LuppassController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/index', [IndexController::class, 'showIndex'])->name('index');
@@ -38,17 +39,19 @@ Route::post('/admin/insert-wisata', [AdminController::class, 'insertWisata'])->n
 Route::get('/edit-wisata-admin/{kd_wisata}', [AdminController::class, 'showEditWisata'])->name('editWisataAdmin');
 Route::put('/update-wisata-admin/{kd_wisata}', [AdminController::class, 'updateWisata'])->name('updateWisataAdmin');
 Route::delete('/delete-wisata-admin/{kd_wisata}', [AdminController::class, 'deleteWisata'])->name('deleteWisataAdmin');
-Route::get('/detail-wisata/{id}', [AdminController::class, 'showDetailWisataAdmin'])->name('detailWisataAdmin');
-
+Route::get('/detail-wisata-admin/{id}', [AdminController::class, 'showDetailWisataAdmin'])->name('detailWisataAdmin');
 Route::get('/admin/event', [AdminController::class, 'showEventAdmin'])->name('eventadmin');
 Route::get('/admin/form-event', [AdminController::class, 'showFormEventAdmin'])->name('formeventadmin');
 Route::post('/admin/insert-event', [AdminController::class, 'insertEvent'])->name('tambahevent');
-Route::get('/detail-event/{id}', [AdminController::class, 'showDetailEventAdmin'])->name('detailEventAdmin');
+Route::get('/detail-event-admin/{id}', [AdminController::class, 'showDetailEventAdmin'])->name('detailEventAdmin');
 Route::get('/edit-event-admin/{kd_event}', [AdminController::class, 'showEditEvent'])->name('editEventAdmin');
 Route::put('/update-event-admin/{kd_event}', [AdminController::class, 'updateEvent'])->name('updateEventAdmin');
 Route::delete('/delete-event-admin/{kd_event}', [AdminController::class, 'deleteEvent'])->name('deleteEventAdmin');
-
-
-
 Route::get('/admin/pengaduan', [AdminController::class, 'showPengaduanAdmin'])->name('pengaduanadmin');
+
+Route::get('/customer/wisata', [CustomerController::class, 'showWisataCustomer'])->name('wisatacustomer');
+Route::get('/detail-wisata-customer/{id}', [CustomerController::class, 'showDetailWisataCustomer'])->name('detailWisataCustomer');
+Route::get('/customer/event', [CustomerController::class, 'showEventCustomer'])->name('eventcustomer');
+Route::get('/detail-event-customer/{id}', [CustomerController::class, 'showDetailEventCustomer'])->name('detailEventCustomer');
+Route::get('/customer/pengaduan', [CustomerController::class, 'showPengaduanCustomer'])->name('pengaduancustomer');
 

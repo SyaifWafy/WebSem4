@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Wisata - Admin</title>
+    <title>Detail Wisata - Customer</title>
     <style>
         .center {
             text-align: center;
@@ -36,7 +36,7 @@
             <ul>
                 @foreach($wisata->event as $event)
                     <li>
-                        <a href="{{ route('detailEventAdmin', $event->kd_event) }}">
+                        <a href="{{ route('detailEventCustomer', $event->kd_event) }}">
                             {{ $event->judul }} / {{ $event->tanggal }}
                         </a>
                     </li>
@@ -46,14 +46,8 @@
     @else
         <p>Tidak ada event pada wisata ini.</p>
     @endif
-    <a href="{{ route('editWisataAdmin', $wisata->kd_wisata) }}" class="btn btn-primary">Edit Wisata</a>
-    <form action="{{ route('deleteWisataAdmin', $wisata->kd_wisata) }}" method="POST" style="display: inline-block;">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin menghapus data wisata ini?')">Delete Wisata</button>
-    </form>
     <br>
     <br>
-    <a href="{{ route('wisataadmin') }}">Kembali ke Daftar Wisata</a>
+    <a href="{{ route('wisatacustomer') }}">Kembali ke Daftar Wisata</a>
 </body>
 </html>

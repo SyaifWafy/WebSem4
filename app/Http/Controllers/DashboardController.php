@@ -17,7 +17,7 @@ class DashboardController extends Controller
     }
     public function logoutcus(Request $request)
     {
-        return redirect()->route('customer.confirmlogoutcus');
+        return redirect()->route('confirmlogoutcus');
     }
     public function confirmLogoutCus(Request $request)
     {
