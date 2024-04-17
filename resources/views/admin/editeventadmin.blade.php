@@ -37,7 +37,7 @@
     <h1>Edit Event</h1>
     <form action="{{ route('updateEventAdmin', $event->kd_event) }}" method="POST">
         @csrf
-        @method('PUT')
+        <input type="hidden" name="_method" value="PUT">
         <div class="form-group">
             <label for="judul">Judul</label>
             <input type="text" name="judul" id="judul" class="form-control" value="{{ $event->judul }}" required>
@@ -45,6 +45,10 @@
         <div class="form-group">
             <label for="tanggal">Tanggal</label>
             <input type="date" name="tanggal" id="tanggal" class="form-control" value="{{ $event->tanggal }}" required>
+        </div>
+        <div class="form-group">
+            <label for="pukul">Pukul</label>
+            <input type="time" name="pukul" id="pukul" class="form-control" value="{{ $event->pukul }}" required>
         </div>
         <div class="form-group">
             <label for="isi">Isi Event</label>

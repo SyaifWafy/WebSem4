@@ -102,6 +102,7 @@ class AdminController extends Controller
         $request->validate([
             'judul' => 'required|string|max:100',
             'tanggal' => 'required|date',
+            'pukul' => 'required|date_format:H:i',
             'isi' => 'required|string|max:250',
             'tempat' => 'required|string|max:100',
             'kd_wisata' => 'required|exists:wisata,kd_wisata',
@@ -111,6 +112,7 @@ class AdminController extends Controller
         $event = new Event();
         $event->judul = $request->judul;
         $event->tanggal = $request->tanggal;
+        $event->pukul = $request->pukul;
         $event->isi = $request->isi;
         $event->tempat = $request->tempat;
         $event->kd_wisata = $request->kd_wisata;
@@ -137,6 +139,7 @@ class AdminController extends Controller
         $request->validate([
             'judul' => 'required|string|max:100',
             'tanggal' => 'required|date',
+            'pukul' => 'required|date_format:H:i',
             'isi' => 'required|string|max:250',
             'tempat' => 'required|string|max:100',
             'kd_wisata' => 'required|exists:wisata,kd_wisata',
@@ -147,6 +150,7 @@ class AdminController extends Controller
         }
         $event->judul = $request->judul;
         $event->tanggal = $request->tanggal;
+        $event->pukul = $request->pukul;
         $event->isi = $request->isi;
         $event->tempat = $request->tempat;
         $event->kd_wisata = $request->kd_wisata;

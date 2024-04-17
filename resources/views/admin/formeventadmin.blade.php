@@ -19,6 +19,11 @@
     </div>
     <br>
     <div>
+        <label for="pukul">Pukul :</label><br>
+        <input type="time" id="pukul" name="pukul" required>
+    </div>
+    <br>
+    <div>
         <label for="isi">Isi Event :</label><br>
         <textarea id="isi" name="isi" rows="4" required></textarea>
     </div>
