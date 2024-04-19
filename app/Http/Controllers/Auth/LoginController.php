@@ -40,12 +40,12 @@ class LoginController extends Controller
         $customer = customer::where('username_cus', $username)->first();
 
         if (!$customer) {
-            return redirect()->route('customer.indexcus')->withErrors(['error' => 'Username tidak ditemukan']);
+            return redirect()->route('indexcus')->withErrors(['error' => 'Username tidak ditemukan']);
         }
         if ($customer->pw_cus === $password) {
             return redirect()->intended('/customer/dashboard');
         } else {
-            return redirect()->route('customer.indexcus')->withErrors(['error' => 'Username atau password salah']);
+            return redirect()->route('indexcus')->withErrors(['error' => 'Username atau password salah']);
         }
     }
 

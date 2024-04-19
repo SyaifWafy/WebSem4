@@ -11,8 +11,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/index', [IndexController::class, 'showIndex'])->name('index');
 
-Route::get('/register', [RegisterController::class, 'showRegistrationFormCus'])->name('registercus');
+Route::get('/registercustomer', [RegisterController::class, 'showRegistrationFormCus'])->name('registercus');
 Route::post('/tambah-customer', [RegisterController::class, 'tambahCustomer'])->name('tambahCustomer');
+Route::get('/registeradmin', [RegisterController::class, 'showRegistrationFormAdmin'])->name('registeradmin');
+Route::post('/tambah-admin', [RegisterController::class, 'tambahAdmin'])->name('tambahAdmin');
 
 Route::get('/logincustomer', [LoginController::class, 'showLoginFormCus'])->name('indexcus');
 Route::get('/loginadmin', [LoginController::class, 'showLoginFormAdmin'])->name('indexadmin');

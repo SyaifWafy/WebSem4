@@ -8,6 +8,9 @@
 <body>
     <h1>Welcome to JemberWonder</h1>
     <h1>Selamat datang, Admin!</h1>
+    <a href="{{ route('registeradmin') }}">Daftarkan Admin</a>
+    <br>
+    <br>
     <a href="{{ route('dashboardadmin') }}">Dashboard</a>
     <a href="{{ route('wisataadmin') }}">Wisata</a>
     <a href="{{ route('eventadmin') }}">Event</a>

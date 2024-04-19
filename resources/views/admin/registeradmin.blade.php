@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JemberWonder - Daftar Customer</title>
+    <title>JemberWonder - Daftar Admin</title>
     <style>
         .center {
             text-align: center;
@@ -53,9 +53,9 @@
 </head>
 <body class="center">
     <div class="w-50 border rounded px-3 py-3 mx-auto">
-        <h1>Customer</h1>
+        <h1>Admin</h1>
         <h1>Daftar</h1>
-        <form action="/tambah-customer" method="POST">
+        <form action="/tambah-admin" method="POST">
             @csrf
             @if ($errors->any())
                 <script>
@@ -67,14 +67,14 @@
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <br>
-                <input type="username_cus" name="username_cus" class="form-control">
+                <input type="username_admin" name="username_admin" class="form-control">
             </div>
             <br>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <br>
                 <div class="password-container">
-                    <input type="password" name="pw_cus" class="form-control password-input">
+                    <input type="password" name="pw_admin" class="form-control password-input">
                     <button type="button" class="toggle-password">Show</button>
                 </div>
             </div>
@@ -91,7 +91,7 @@
             <div class="mb-3">
                 <label for="fullname" class="form-label">Nama Lengkap</label>
                 <br>
-                <input type="fullname_cus" name="fullname_cus" class="form-control">
+                <input type="fullname_admin" name="fullname_admin" class="form-control">
             </div>
             <br>
             <div class="mb-3">
@@ -120,7 +120,7 @@
             </div>
             <br>
             <div class="mb-3">
-                <a href="{{ ('logincustomer') }}">Kembali ke login</a>
+                <a href="{{ ('/admin/dashboard') }}">Kembali</a>
             </div>
         </form>
     </div>
