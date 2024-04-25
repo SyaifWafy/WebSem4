@@ -34,7 +34,7 @@
     <form action="{{ route('deleteEventAdmin', $event->kd_event) }}" method="POST" style="display: inline-block;">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin menghapus data event ini?')">Delete Event</button>
+        <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin menghapus data event ini?')">Hapus Event</button>
     </form>
     <br>
     <br>

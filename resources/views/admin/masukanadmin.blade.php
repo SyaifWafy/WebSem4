@@ -10,16 +10,28 @@
     <a href="{{ route('dashboardadmin') }}">Dashboard</a>
     <a href="{{ route('wisataadmin') }}">Wisata</a>
     <a href="{{ route('eventadmin') }}">Event</a>
-    <a href="{{ route('masukanadmin') }}">masukan</a>
+    <a href="{{ route('masukanadmin') }}">Masukan</a>
     <br>
+    <br>
+    <div class="center">
+        <ul>
+            @foreach($masukans as $masukan)
+                <li>
+                    <div class="comment-box">
+                        <a href="{{ route('detailmasukanadmin', $masukan->kd_masukan) }}"><strong>Masukan {{ $masukan->kd_masukan }}</strong></a>
+                    </div>
+                </li>
+            @endforeach
+        </ul>
+    </div>
     <br>
     <form id="logoutForm" action="{{ route('logoutadmin') }}" method="POST">
         @csrf
-        <button type="button" onclick="confirmLogout()">Logout</button>
+        <button type="button" onclick="confirmLogout()">Keluar</button>
     </form>
     <script>
         function confirmLogout() {
-            if (confirm('Apakah Anda yakin untuk logout?')) {
+            if (confirm('Apakah Anda yakin untuk keluar?')) {
                 document.getElementById('logoutForm').submit();
             }
         }

@@ -60,7 +60,7 @@
             <input type="text" name="lokasi" id="lokasi" class="form-control" value="{{ $wisata->lokasi }}" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary">Perbarui</button>
         <a href="{{ route('detailWisataAdmin', $wisata->kd_wisata) }}" class="btn btn-secondary">Batal</a>
     </form>
 </body>

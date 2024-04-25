@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\Wisata;
 use App\Models\Event;
+use App\Models\Masukan;
 
 class AdminController extends Controller
 {
@@ -27,10 +28,6 @@ class AdminController extends Controller
     {
         $wisatas = Wisata::all();
         return view('admin.formeventadmin', ['wisatas' => $wisatas]);
-    }
-    public function showPengaduanAdmin()
-    {
-        return view('admin.pengaduanadmin');
     }
     public function insertWisata(Request $request)
     {
@@ -166,5 +163,24 @@ class AdminController extends Controller
         }
         $event->delete();
         return redirect()->route('eventadmin')->with('success', 'Event deleted successfully.');
+    }
+    public function showMasukanAdmin()
+    {
+        $masukans = Masukan::all();
+        return view('admin.masukanadmin', compact('masukans'));
+    }
+    public function showDetailMasukanAdmin($kd_masukan)
+    {
+        $masukan = Masukan::find($kd_masukan);
+        return view('admin.detailmasukanadmin', compact('masukan'));
+    }
+        public function deleteMasukan($kd_masukan)
+    {
+        $masukan = Masukan::find($kd_masukan);
+        if (!$masukan) {
+            return redirect()->route('masukanadmin')->with('error', 'Masukan tidak ditemukan.');
+        }
+        $masukan->delete();
+        return redirect()->route('masukanadmin')->with('success', 'Masukan berhasil dihapus.');
     }
 }

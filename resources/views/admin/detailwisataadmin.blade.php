@@ -50,7 +50,7 @@
     <form action="{{ route('deleteWisataAdmin', $wisata->kd_wisata) }}" method="POST" style="display: inline-block;">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin menghapus data wisata ini?')">Delete Wisata</button>
+        <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda yakin ingin menghapus data wisata ini?')">Hapus Wisata</button>
     </form>
     <br>
     <br>

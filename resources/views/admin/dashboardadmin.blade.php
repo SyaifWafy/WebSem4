@@ -19,11 +19,11 @@
     <br>
     <form id="logoutForm" action="{{ route('logoutadmin') }}" method="POST">
         @csrf
-        <button type="button" onclick="confirmLogout()">Logout</button>
+        <button type="button" onclick="confirmLogout()">Keluar</button>
     </form>
     <script>
         function confirmLogout() {
-            if (confirm('Apakah Anda yakin untuk logout?')) {
+            if (confirm('Apakah Anda yakin untuk keluar?')) {
                 document.getElementById('logoutForm').submit();
             }
         }

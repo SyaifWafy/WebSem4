@@ -56,6 +56,8 @@ Route::get('/customer/event', [CustomerController::class, 'showEventCustomer'])-
 Route::get('/detail-event-customer/{id}', [CustomerController::class, 'showDetailEventCustomer'])->name('detailEventCustomer');
 
 Route::get('/admin/masukan', [AdminController::class, 'showMasukanAdmin'])->name('masukanadmin');
+Route::get('/admin/detail-masukan/{kd_masukan}', [AdminController::class, 'showDetailMasukanAdmin'])->name('detailmasukanadmin');
+Route::delete('/delete-detail-masukan-admin/{kd_masukan}', [AdminController::class, 'deleteMasukan'])->name('deletemasukan');
 
 Route::get('/customer/masukan', [CustomerController::class, 'showMasukanCustomer'])->name('masukancustomer');
 Route::get('/customer/form-masukan', [CustomerController::class, 'showFormMasukanCustomer'])->name('formmasukancustomer');
