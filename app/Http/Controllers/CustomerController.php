@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\Wisata;
 use App\Models\Event;
+use App\Models\Pengaduan;
 
 class CustomerController extends Controller
 {
@@ -39,6 +40,23 @@ class CustomerController extends Controller
     {
         return view('customer.pengaduancus');
     }
+    public function showFormPengaduanCustomer()
+    {
+        return view('customer.formpengaduancus');
+    }
+    public function tambahPengaduan(Request $request)
+    {
+        $request->validate([
+            'keluhan' => 'required|string|max:250',
+        ], [
+            'keluhan.required' => 'Mohon isi keluhan anda.',
+            'keluhan.max' => 'Keluhan maksimal 250 karakter.',
+        ]);
+        $pengaduan = new Pengaduan();
+        $pengaduan->keluhan = $request->keluhan;
+        $pengaduan->username_cus = 'Customer';
+        $pengaduan->save();
+        return redirect()->route('pengaduancustomer')->with('success', 'Pengaduan berhasil ditambahkan');
+    }
 }
-
 ?>

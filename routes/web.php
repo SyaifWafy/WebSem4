@@ -49,11 +49,16 @@ Route::get('/detail-event-admin/{id}', [AdminController::class, 'showDetailEvent
 Route::get('/edit-event-admin/{kd_event}', [AdminController::class, 'showEditEvent'])->name('editEventAdmin');
 Route::put('/update-event-admin/{kd_event}', [AdminController::class, 'updateEvent'])->name('updateEventAdmin');
 Route::delete('/delete-event-admin/{kd_event}', [AdminController::class, 'deleteEvent'])->name('deleteEventAdmin');
-Route::get('/admin/pengaduan', [AdminController::class, 'showPengaduanAdmin'])->name('pengaduanadmin');
 
 Route::get('/customer/wisata', [CustomerController::class, 'showWisataCustomer'])->name('wisatacustomer');
 Route::get('/detail-wisata-customer/{id}', [CustomerController::class, 'showDetailWisataCustomer'])->name('detailWisataCustomer');
 Route::get('/customer/event', [CustomerController::class, 'showEventCustomer'])->name('eventcustomer');
 Route::get('/detail-event-customer/{id}', [CustomerController::class, 'showDetailEventCustomer'])->name('detailEventCustomer');
+
+Route::get('/admin/pengaduan', [AdminController::class, 'showPengaduanAdmin'])->name('pengaduanadmin');
+
 Route::get('/customer/pengaduan', [CustomerController::class, 'showPengaduanCustomer'])->name('pengaduancustomer');
+Route::get('/customer/form-pengaduan', [CustomerController::class, 'showFormPengaduanCustomer'])->name('formpengaduancustomer');
+Route::post('/customer/tambah-pengaduan', [CustomerController::class, 'tambahPengaduan'])->name('tambahpengaduan');
+
 

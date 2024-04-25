@@ -1,30 +1,24 @@
 <?php
 
 return [
-    'guard' => [
-        'customer' => [
+    'guards' => [
+        'web' => [
             'driver' => 'session',
-            'provider' => 'customer',
+            'provider' => 'customers',
         ],
-
         'admin' => [
             'driver' => 'session',
-            'provider' => 'admin',
+            'provider' => 'admins',
         ],
     ],
-
-    'provider' => [
-        'customer' => [
+    'providers' => [
+        'customers' => [
             'driver' => 'eloquent',
-            'model' => 'App\Models\Customer',
+            'model' => App\Models\Customer::class,
         ],
-
-        'admin' => [
+        'admins' => [
             'driver' => 'eloquent',
-            'model' => 'App\Models\Admin',
+            'model' => App\Models\Admin::class,
         ],
     ],
-
 ];
-
-

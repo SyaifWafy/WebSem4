@@ -17,17 +17,4 @@ class Admin extends Model
         'pertanyaan',
         'jawaban',
     ];
-    public function up()
-    {
-        Schema::create('admin', function (Blueprint $table) {
-            $table->string('username_admin')->unique();
-            $table->string('pw_admin');
-            $table->timestamps();
-        });
-    }
-
-    public function down()
-    {
-        Schema::dropIfExists('admin');
-    }
 }

@@ -17,17 +17,4 @@ class Customer extends Model
         'pertanyaan',
         'jawaban',
     ];
-    public function up()
-    {
-        Schema::create('customer', function (Blueprint $table) {
-            $table->string('username_cus')->unique();
-            $table->string('pw_cus');
-            $table->timestamps();
-        });
-    }
-
-    public function down()
-    {
-        Schema::dropIfExists('customer');
-    }
 }
