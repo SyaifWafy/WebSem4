@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JemberWonder - Form Pengaduan Customer</title>
+    <title>JemberWonder - Form Masukan Customer</title>
     <style>
         .center {
             text-align: center;
@@ -26,18 +26,24 @@
     </style>
 </head>
 <body>
-    <h2>Tambah Pengaduan</h2>
-    <form action="{{ route('tambahpengaduan') }}" method="POST">
+    <h2>Tambah Masukan</h2>
+    <form action="{{ route('tambahmasukan') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="keluhan">Keluhan :</label>
             <br>
-            <textarea class="form-control" id="keluhan" name="keluhan" rows="4" required></textarea>
+            <label for="nama">Nama :</label><br>
+            <input type="text" id="nama" name="nama" required placeholder="Nama anda">
+            <br>
+            <br>
+            <label for="masukan">Masukan :</label>
+            <br>
+            <textarea class="form-control" id="masukan" name="masukan" rows="4" required placeholder="Masukan anda"></textarea>
         </div>
+        <br>
         <button type="submit" class="btn btn-primary">Tambah</button>
     </form>
     <br>
     <br>
-    <a href="{{ route('pengaduancustomer') }}">Kembali</a>
+    <a href="{{ route('masukancustomer') }}">Kembali</a>
 </body>
 </html>

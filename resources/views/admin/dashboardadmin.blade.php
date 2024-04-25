@@ -14,7 +14,7 @@
     <a href="{{ route('dashboardadmin') }}">Dashboard</a>
     <a href="{{ route('wisataadmin') }}">Wisata</a>
     <a href="{{ route('eventadmin') }}">Event</a>
-    <a href="{{ route('pengaduanadmin') }}">Pengaduan</a>
+    <a href="{{ route('masukanadmin') }}">Masukan</a>
     <br>
     <br>
     <form id="logoutForm" action="{{ route('logoutadmin') }}" method="POST">

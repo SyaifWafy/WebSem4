@@ -9,7 +9,7 @@
 <form action="{{ route('tambahevent') }}" method="POST">
     @csrf
     <div>
-        <label for="judul">Judul:</label><br>
+        <label for="judul">Judul :</label><br>
         <input type="text" id="judul" name="judul" required>
     </div>
     <br>

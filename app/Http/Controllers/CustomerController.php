@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\Wisata;
 use App\Models\Event;
-use App\Models\Pengaduan;
+use App\Models\Masukan;
 
 class CustomerController extends Controller
 {
@@ -36,27 +36,38 @@ class CustomerController extends Controller
         }
         return view('customer.detaileventcus', ['event' => $event]);
     }
-    public function showPengaduanCustomer()
+    public function showMasukanCustomer()
     {
-        return view('customer.pengaduancus');
+        $masukans = Masukan::all();
+        return view('customer.masukancus', compact('masukans'));
     }
-    public function showFormPengaduanCustomer()
+    public function showFormMasukanCustomer()
     {
-        return view('customer.formpengaduancus');
+        $masukan = Masukan::all();
+        return view('customer.formmasukancus', compact('masukan'));
     }
-    public function tambahPengaduan(Request $request)
+    public function tambahMasukan(Request $request)
     {
         $request->validate([
-            'keluhan' => 'required|string|max:250',
+            'nama' => 'required|string|min:2',
+            'masukan' => 'required|string|max:250',
         ], [
-            'keluhan.required' => 'Mohon isi keluhan anda.',
-            'keluhan.max' => 'Keluhan maksimal 250 karakter.',
+            'nama.required' => 'Mohon isi nama anda.',
+            'nama.min' => 'Nama minimal 2 karakter.',
+            'masukan.required' => 'Mohon isi masukan anda.',
+            'masukan.max' => 'Masukan maksimal 300 karakter.',
         ]);
-        $pengaduan = new Pengaduan();
-        $pengaduan->keluhan = $request->keluhan;
-        $pengaduan->username_cus = 'Customer';
-        $pengaduan->save();
-        return redirect()->route('pengaduancustomer')->with('success', 'Pengaduan berhasil ditambahkan');
+        $masukan = new Masukan();
+        $masukan->nama = $request->nama;
+        $masukan->masukan = $request->masukan;
+        $masukan->username_cus = 'Customer';
+        $masukan->save();
+        return redirect()->route('masukancustomer')->with('success', 'Masukan berhasil ditambahkan');
+    }
+        public function showDetailMasukanCustomer($kd_masukan)
+    {
+        $masukan = Masukan::find($kd_masukan);
+        return view('customer.detailmasukancus', compact('masukan'));
     }
 }
 ?>

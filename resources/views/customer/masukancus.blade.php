@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JemberWonder - Form Pengaduan Customer</title>
+    <title>JemberWonder - Masukan Customer</title>
     <style>
         .center {
             text-align: center;
@@ -30,11 +30,23 @@
     <a href="{{ route('dashboardcustomer') }}">Dashboard</a>
     <a href="{{ route('wisatacustomer') }}">Wisata</a>
     <a href="{{ route('eventcustomer') }}">Event</a>
-    <a href="{{ route('pengaduancustomer') }}">Pengaduan</a>
+    <a href="{{ route('masukancustomer') }}">Masukan</a>
     <br>
     <br>
-    <button onclick="window.location.href='{{ route('formpengaduancustomer') }}'" class="btn btn-primary">Tambah Pengaduan</button>
+    <button onclick="window.location.href='{{ route('formmasukancustomer') }}'" class="btn btn-primary">Tambah Masukan</button>
     <br>
+    <br>
+    <div class="center">
+        <ul>
+            @foreach($masukans as $masukan)
+                <li>
+                    <div class="comment-box">
+                        <a href="{{ route('detailmasukancustomer', $masukan->kd_masukan) }}"><strong>Masukan {{ $masukan->kd_masukan }}</strong></a>
+                    </div>
+                </li>
+            @endforeach
+        </ul>
+    </div>
     <br>
     <form id="logoutForm" action="{{ route('logoutcus') }}" method="POST">
         @csrf

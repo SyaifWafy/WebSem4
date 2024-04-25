@@ -55,10 +55,11 @@ Route::get('/detail-wisata-customer/{id}', [CustomerController::class, 'showDeta
 Route::get('/customer/event', [CustomerController::class, 'showEventCustomer'])->name('eventcustomer');
 Route::get('/detail-event-customer/{id}', [CustomerController::class, 'showDetailEventCustomer'])->name('detailEventCustomer');
 
-Route::get('/admin/pengaduan', [AdminController::class, 'showPengaduanAdmin'])->name('pengaduanadmin');
+Route::get('/admin/masukan', [AdminController::class, 'showMasukanAdmin'])->name('masukanadmin');
 
-Route::get('/customer/pengaduan', [CustomerController::class, 'showPengaduanCustomer'])->name('pengaduancustomer');
-Route::get('/customer/form-pengaduan', [CustomerController::class, 'showFormPengaduanCustomer'])->name('formpengaduancustomer');
-Route::post('/customer/tambah-pengaduan', [CustomerController::class, 'tambahPengaduan'])->name('tambahpengaduan');
+Route::get('/customer/masukan', [CustomerController::class, 'showMasukanCustomer'])->name('masukancustomer');
+Route::get('/customer/form-masukan', [CustomerController::class, 'showFormMasukanCustomer'])->name('formmasukancustomer');
+Route::get('/customer/detail-masukan/{kd_masukan}', [CustomerController::class, 'showDetailMasukanCustomer'])->name('detailmasukancustomer');
+Route::post('/customer/tambah-masukan', [CustomerController::class, 'tambahMasukan'])->name('tambahmasukan');
 
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pengaduan extends Model
+class Masukan extends Model
 {
     use HasFactory;
 
@@ -14,11 +14,12 @@ class Pengaduan extends Model
      *
      * @var array
      */
-    protected $primaryKey = 'kd_pengaduan';
-    protected $table = 'pengaduan';
+    protected $primaryKey = 'kd_masukan';
+    protected $table = 'masukan';
     protected $fillable = [
         'username_cus',
-        'keluhan',
+        'nama',
+        'masukan',
     ];
 
     /**
