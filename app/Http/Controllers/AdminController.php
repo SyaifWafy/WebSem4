@@ -211,7 +211,7 @@ class AdminController extends Controller
             'isi' => 'required|string|min:5|max:250',
             'tempat' => 'required|string|min:3|max:100',
             'kd_wisata' => 'required|exists:wisata,kd_wisata',
-            'gambarevent' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10000',
+            'gambarevent' => 'image|mimes:jpeg,png,jpg,gif|max:10000',
         ], [
             'judul.required' => 'Judul belum ditambahkan.',
             'judul.min' => 'Judul harus lebih dari 3 karakter.',

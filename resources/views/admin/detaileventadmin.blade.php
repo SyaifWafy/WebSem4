@@ -31,9 +31,9 @@
     <p><strong>Tempat :</strong> {{ $event->tempat }}</p>
     <p><strong>Tempat Wisata :</strong> {{ $event->wisata->nama_wisata }}</p>
     @if($event->gambarevent)
-        <img src="{{ asset('storage/img/' . $event->gambarevent) }}" alt="Gambar Event">
+        <img src="{{ Storage::url($event->gambarevent) }}" alt="Foto Event">
     @else
-        <p>Tidak ada gambar untuk event ini.</p>
+        <p>Tidak ada foto untuk wisata ini.</p>
     @endif
     <br>
     <br>

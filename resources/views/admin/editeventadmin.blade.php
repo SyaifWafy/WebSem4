@@ -35,7 +35,7 @@
 </head>
 <body>
     <h1>Edit Event</h1>
-    <form action="{{ route('updateEventAdmin', $event->kd_event) }}" method="POST">
+    <form action="{{ route('updateEventAdmin', $event->kd_event) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if ($errors->any())
             <script>
