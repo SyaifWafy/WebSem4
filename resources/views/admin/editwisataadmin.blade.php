@@ -35,31 +35,36 @@
 </head>
 <body>
     <h1>Edit Wisata</h1>
-
-    <form action="{{ route('updateWisataAdmin', $wisata->kd_wisata) }}" method="POST">
+    <form action="{{ route('updateWisataAdmin', $wisata->kd_wisata) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @if ($errors->any())
+            <script>
+                window.onload = function() {
+                    alert("{{ $errors->first() }}");
+                };
+            </script>
+        @endif
         @method('PUT')
-
         <div class="form-group">
             <label for="nama_wisata">Nama Wisata</label>
             <input type="text" name="nama_wisata" id="nama_wisata" class="form-control" value="{{ $wisata->nama_wisata }}" required>
         </div>
-
         <div class="form-group">
             <label for="keterangan">Keterangan</label>
             <textarea name="keterangan" id="keterangan" class="form-control" rows="3" required>{{ $wisata->keterangan }}</textarea>
         </div>
-
         <div class="form-group">
             <label for="kategori">Kategori</label>
             <input type="text" name="kategori" id="kategori" class="form-control" value="{{ $wisata->kategori }}" required>
         </div>
-
         <div class="form-group">
             <label for="lokasi">Lokasi</label>
             <input type="text" name="lokasi" id="lokasi" class="form-control" value="{{ $wisata->lokasi }}" required>
         </div>
-
+        <div class="form-group">
+            <label for="gambarwisata">Foto Wisata</label>
+            <input type="file" name="gambarwisata" id="gambarwisata" class="form-control">
+        </div>
         <button type="submit" class="btn btn-primary">Perbarui</button>
         <a href="{{ route('detailWisataAdmin', $wisata->kd_wisata) }}" class="btn btn-secondary">Batal</a>
     </form>

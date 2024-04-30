@@ -27,12 +27,12 @@
     <form action="{{ route('tambahwisata') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if ($errors->any())
-                <script>
-                    window.onload = function() {
-                        alert("{{ $errors->first() }}");
-                    };
-                </script>
-            @endif
+            <script>
+                window.onload = function() {
+                    alert("{{ $errors->first() }}");
+                };
+            </script>
+        @endif
         <div>
             <label for="nama_wisata">Nama Wisata :</label><br>
             <input type="text" id="nama_wisata" name="nama_wisata">

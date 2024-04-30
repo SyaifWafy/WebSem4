@@ -71,7 +71,6 @@ class AdminController extends Controller
     session()->flash('success', 'Data berhasil disimpan');
     return redirect()->route('wisataadmin')->withErrors(['success', 'Data berhasil disimpan']);
 }
-
         public function showDetailWisataAdmin($kd_wisata)
     {
         $wisata = Wisata::with('event')->where('kd_wisata', $kd_wisata)->first();
@@ -88,13 +87,28 @@ class AdminController extends Controller
         }
         return view('admin.editwisataadmin', ['wisata' => $wisata]);
     }
-        public function updateWisata(Request $request, $kd_wisata)
+    public function updateWisata(Request $request, $kd_wisata)
     {
         $request->validate([
-            'nama_wisata' => 'required|string|max:100',
-            'keterangan' => 'required|string|max:250',
-            'kategori' => 'required|string|max:100',
-            'lokasi' => 'required|string|max:100',
+            'nama_wisata' => 'required|string|min:2|max:100',
+            'keterangan' => 'required|string|min:10|max:250',
+            'kategori' => 'required|string|min:2|max:100',
+            'lokasi' => 'required|string|min:2|max:100',
+            'gambarwisata' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ], [
+            'nama_wisata.required' => 'Nama wisata belum ditambahkan.',
+            'nama_wisata.max' => 'Nama wisata tidak boleh lebih dari 100 karakter.',
+            'nama_wisata.min' => 'Nama wisata harus lebih dari 2 karakter.',
+            'kategori.required' => 'Kategori belum ditambahkan.',
+            'kategori.max' => 'Kategori tidak boleh lebih dari 100 karakter.',
+            'kategori.min' => 'Kategori harus lebih dari 2 karakter.',
+            'keterangan.required' => 'Keterangan belum ditambahkan.',
+            'keterangan.min' => 'Keterangan harus lebih dari 10 karakter.',
+            'keterangan.max' => 'Keterangan tidak boleh lebih dari 250 karakter.',
+            'lokasi.required' => 'Lokasi belum ditambahkan.',
+            'lokasi.max' => 'Lokasi tidak boleh lebih dari 100 karakter.',
+            'lokasi.min' => 'Lokasi harus lebih dari 2 karakter.',
+            'gambarwisata.max' => 'Ukuran file foto tidak boleh melebihi 2MB.',
         ]);
         try {
             $wisata = Wisata::where('kd_wisata', $kd_wisata)->firstOrFail();
@@ -105,6 +119,15 @@ class AdminController extends Controller
         $wisata->keterangan = $request->keterangan;
         $wisata->kategori = $request->kategori;
         $wisata->lokasi = $request->lokasi;
+        if ($request->hasFile('gambarwisata')) {
+            if ($wisata->gambarwisata) {
+                Storage::delete($wisata->gambarwisata);
+            }
+            $image = $request->file('gambarwisata');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $path = $request->file('gambarwisata')->storeAs('public/img', $imageName);
+            $wisata->gambarwisata = $path;
+        }
         $wisata->save();
         return redirect()->route('wisataadmin')->with('success', 'Data berhasil diupdate');
     }
