@@ -6,8 +6,15 @@
 </head>
 <body>
 <h2>Tambah Event</h2>
-<form action="{{ route('tambahevent') }}" method="POST">
+<form action="{{ route('tambahevent') }}" method="POST" enctype="multipart/form-data">
     @csrf
+    @if ($errors->any())
+        <script>
+            window.onload = function() {
+                alert("{{ $errors->first() }}");
+            };
+        </script>
+    @endif
     <div>
         <label for="judul">Judul :</label><br>
         <input type="text" id="judul" name="judul" required>
@@ -40,6 +47,11 @@
                 <option value="{{ $wisata->kd_wisata }}">{{ $wisata->nama_wisata }}</option>
             @endforeach
         </select>
+    </div>
+    <br>
+    <div>
+        <label for="gambarevent">Foto Event :</label><br>
+        <input type="file" id="gambarevent" name="gambarevent" required>
     </div>
     <br>
     <div>

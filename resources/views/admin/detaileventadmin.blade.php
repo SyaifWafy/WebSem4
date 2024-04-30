@@ -30,6 +30,13 @@
     <p><strong>Isi :</strong> {{ $event->isi }}</p>
     <p><strong>Tempat :</strong> {{ $event->tempat }}</p>
     <p><strong>Tempat Wisata :</strong> {{ $event->wisata->nama_wisata }}</p>
+    @if($event->gambarevent)
+        <img src="{{ asset('storage/img/' . $event->gambarevent) }}" alt="Gambar Event">
+    @else
+        <p>Tidak ada gambar untuk event ini.</p>
+    @endif
+    <br>
+    <br>
     <a href="{{ route('editEventAdmin', $event->kd_event) }}" class="btn btn-primary">Edit Event</a>
     <form action="{{ route('deleteEventAdmin', $event->kd_event) }}" method="POST" style="display: inline-block;">
         @csrf
