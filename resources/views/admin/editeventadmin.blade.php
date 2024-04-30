@@ -37,6 +37,13 @@
     <h1>Edit Event</h1>
     <form action="{{ route('updateEventAdmin', $event->kd_event) }}" method="POST">
         @csrf
+        @if ($errors->any())
+            <script>
+                window.onload = function() {
+                    alert("{{ $errors->first() }}");
+                };
+            </script>
+        @endif
         <input type="hidden" name="_method" value="PUT">
         <div class="form-group">
             <label for="judul">Judul</label>
@@ -65,6 +72,10 @@
                     <option value="{{ $wisata->kd_wisata }}" {{ $event->kd_wisata == $wisata->kd_wisata ? 'selected' : '' }}>{{ $wisata->nama_wisata }}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="form-group">
+            <label for="gambarevent">Foto Event</label>
+            <input type="file" name="gambarevent" id="gambarevent" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Perbarui</button>
         <a href="{{ route('detailEventAdmin', $event->kd_event) }}" class="btn btn-secondary">Batal</a>

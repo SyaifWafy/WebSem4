@@ -28,6 +28,11 @@
     <p><strong>Keterangan :</strong> {{ $wisata->keterangan }}</p>
     <p><strong>Kategori :</strong> {{ $wisata->kategori }}</p>
     <p><strong>Lokasi :</strong> {{ $wisata->lokasi }}</p>
+    @if($wisata->gambarwisata)
+        <img src="{{ Storage::url($wisata->gambarwisata) }}" alt="Foto Wisata">
+    @else
+        <p>Tidak ada foto untuk wisata ini.</p>
+    @endif
     <h2>Event</h2>
     @if($wisata->event)
         @if($wisata->event->isEmpty())

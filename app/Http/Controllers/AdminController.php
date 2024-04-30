@@ -53,6 +53,7 @@ class AdminController extends Controller
         'lokasi.min' => 'Lokasi harus lebih dari 2 karakter.',
         'gambarwisata.required' => 'Foto wisata harus ditambahkan',
         'gambarwisata.max' => 'Ukuran file foto tidak boleh melebihi 10MB.',
+        'gambarwisata.mimes' => 'Foto wisata harus dalam format jpeg, png, jpg, atau gif.',
     ]);
     $username_admin = 'Admin';
     $wisata = new Wisata();
@@ -108,7 +109,9 @@ class AdminController extends Controller
             'lokasi.required' => 'Lokasi belum ditambahkan.',
             'lokasi.max' => 'Lokasi tidak boleh lebih dari 100 karakter.',
             'lokasi.min' => 'Lokasi harus lebih dari 2 karakter.',
+            'gambarwisata.image' => 'Foto wisata harus berupa gambar.',
             'gambarwisata.max' => 'Ukuran file foto tidak boleh melebihi 10MB.',
+            'gambarwisata.mimes' => 'Foto wisata harus dalam format jpeg, png, jpg, atau gif.',
         ]);
         try {
             $wisata = Wisata::where('kd_wisata', $kd_wisata)->firstOrFail();
@@ -166,6 +169,7 @@ class AdminController extends Controller
             'kd_wisata.required' => 'Wisata belum ditambahkan.',
             'gambarevent.required' => 'Foto event harus ditambahkan.',
             'gambarevent.max' => 'Ukuran file foto tidak boleh melebihi 10 MB.',
+            'gambarevent.mimes' => 'Foto event harus dalam format jpeg, png, jpg, atau gif.',
         ]);
         if ($request->hasFile('gambarevent')) {
             $imageName = time().'.'.$request->gambarevent->getClientOriginalExtension();
@@ -198,19 +202,43 @@ class AdminController extends Controller
         $wisatas = Wisata::all();
         return view('admin.editeventadmin', compact('event', 'wisatas'));
     }
-        public function updateEvent(Request $request, $kd_event)
+    public function updateEvent(Request $request, $kd_event)
     {
         $request->validate([
-            'judul' => 'required|string|max:100',
+            'judul' => 'required|string|min:3|max:100',
             'tanggal' => 'required|date',
-            'pukul' => 'required|date_format:H:i',
-            'isi' => 'required|string|max:250',
-            'tempat' => 'required|string|max:100',
+            'pukul' => 'required',
+            'isi' => 'required|string|min:5|max:250',
+            'tempat' => 'required|string|min:3|max:100',
             'kd_wisata' => 'required|exists:wisata,kd_wisata',
+            'gambarevent' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10000',
+        ], [
+            'judul.required' => 'Judul belum ditambahkan.',
+            'judul.min' => 'Judul harus lebih dari 3 karakter.',
+            'judul.max' => 'Judul tidak boleh lebih dari 100 karakter.',
+            'isi.required' => 'Isi belum ditambahkan.',
+            'isi.min' => 'Isi harus lebih dari 5 karakter.',
+            'isi.max' => 'Isi tidak boleh lebih dari 250 karakter.',
+            'tempat.required' => 'Tempat belum ditambahkan.',
+            'tempat.min' => 'Tempat harus lebih dari 3 karakter.',
+            'tempat.max' => 'Tempat tidak boleh lebih dari 100 karakter.',
+            'kd_wisata.required' => 'Wisata belum ditambahkan.',
+            'gambarevent.image' => 'Foto event harus berupa gambar.',
+            'gambarevent.mimes' => 'Foto event harus dalam format jpeg, png, jpg, atau gif.',
+            'gambarevent.max' => 'Ukuran file foto event tidak boleh melebihi 10 MB.',
         ]);
         $event = Event::find($kd_event);
         if (!$event) {
             return redirect()->route('eventadmin')->with('error', 'Data tidak ditemukan');
+        }
+        if ($request->hasFile('gambarevent')) {
+            if ($event->gambarevent) {
+                Storage::delete($event->gambarevent);
+            }
+            $image = $request->file('gambarevent');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $path = $request->file('gambarevent')->storeAs('public/img', $imageName);
+            $event->gambarevent = $path;
         }
         $event->judul = $request->judul;
         $event->tanggal = $request->tanggal;

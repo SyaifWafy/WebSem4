@@ -11,7 +11,13 @@ class Event extends Model
     protected $primaryKey = 'kd_event';
     protected $table = 'event';
     protected $fillable = [
-        'judul', 'tanggal', 'isi', 'tempat', 'kd_wisata', 'username_admin'
+        'judul',
+        'tanggal',
+        'isi',
+        'tempat',
+        'gambarevent',
+        'kd_wisata',
+        'username_admin'
     ];
 
     public function wisata()
