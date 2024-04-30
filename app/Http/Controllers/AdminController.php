@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Wisata;
 use App\Models\Event;
@@ -30,24 +31,47 @@ class AdminController extends Controller
         return view('admin.formeventadmin', ['wisatas' => $wisatas]);
     }
     public function insertWisata(Request $request)
-    {
-        $request->validate([
-            'keterangan' => 'required|string|max:250',
-            'lokasi' => 'required|string|max:100',
-            'kategori' => 'required|string|max:100',
-            'nama_wisata' => 'required|string|max:100',
-        ]);
-        $username_admin = 'Admin';
-        $wisata = new Wisata();
-        $wisata->keterangan = $request->keterangan;
-        $wisata->lokasi = $request->lokasi;
-        $wisata->kategori = $request->kategori;
-        $wisata->nama_wisata = $request->nama_wisata;
-        $wisata->username_admin = $username_admin;
-        $wisata->save();
-        session()->flash('success', 'Data berhasil disimpan');
-        return redirect()->route('wisataadmin');
+{
+    $request->validate([
+        'nama_wisata' => 'required|string|min:2|max:100',
+        'kategori' => 'required|string|min:2|max:100',
+        'keterangan' => 'required|string|min:10|max:250',
+        'lokasi' => 'required|string|min:2|max:100',
+        'gambarwisata' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ], [
+        'nama_wisata.required' => 'Nama wisata belum ditambahkan.',
+        'nama_wisata.max' => 'Nama wisata tidak boleh lebih dari 100 karakter.',
+        'nama_wisata.min' => 'Nama wisata harus lebih dari 2 karakter.',
+        'kategori.required' => 'Kategori belum ditambahkan.',
+        'kategori.max' => 'Kategori tidak boleh lebih dari 100 karakter.',
+        'kategori.min' => 'Kategori harus lebih dari 2 karakter.',
+        'keterangan.required' => 'Keterangan belum ditambahkan.',
+        'keterangan.min' => 'Keterangan harus lebih dari 10 karakter.',
+        'keterangan.max' => 'Keterangan tidak boleh lebih dari 250 karakter.',
+        'lokasi.required' => 'Lokasi belum ditambahkan.',
+        'lokasi.max' => 'Lokasi tidak boleh lebih dari 100 karakter.',
+        'lokasi.min' => 'Lokasi harus lebih dari 2 karakter.',
+        'gambarwisata.required' => 'Foto wisata harus ditambahkan',
+        'gambarwisata.max' => 'Ukuran file foto tidak boleh melebihi 2MB.',
+    ]);
+    $username_admin = 'Admin';
+    $wisata = new Wisata();
+    $wisata->keterangan = $request->keterangan;
+    $wisata->lokasi = $request->lokasi;
+    $wisata->kategori = $request->kategori;
+    $wisata->nama_wisata = $request->nama_wisata;
+    $wisata->username_admin = $username_admin;
+    if ($request->hasFile('gambarwisata')) {
+        $image = $request->file('gambarwisata');
+        $imageName = time().'.'.$image->getClientOriginalExtension();
+        $path = $request->file('gambarwisata')->storeAs('public/img', $imageName);
+        $wisata->gambarwisata = $path;
     }
+    $wisata->save();
+    session()->flash('success', 'Data berhasil disimpan');
+    return redirect()->route('wisataadmin')->withErrors(['success', 'Data berhasil disimpan']);
+}
+
         public function showDetailWisataAdmin($kd_wisata)
     {
         $wisata = Wisata::with('event')->where('kd_wisata', $kd_wisata)->first();

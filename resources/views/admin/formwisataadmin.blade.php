@@ -23,15 +23,16 @@
     </style>
 </head>
 <body>
-    <h1>JemberWonder</h1>
-    <a href="{{ route('dashboardadmin') }}">Dashboard</a>
-    <a href="{{ route('wisataadmin') }}">Wisata</a>
-    <a href="{{ route('eventadmin') }}">Event</a>
-    <a href="{{ route('pengaduanadmin') }}">Pengaduan</a>
-    <br>
-    <br>
-    <form action="{{ route('tambahwisata') }}" method="POST">
+    <h2>Tambah Wisata</h2>
+    <form action="{{ route('tambahwisata') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @if ($errors->any())
+                <script>
+                    window.onload = function() {
+                        alert("{{ $errors->first() }}");
+                    };
+                </script>
+            @endif
         <div>
             <label for="nama_wisata">Nama Wisata :</label><br>
             <input type="text" id="nama_wisata" name="nama_wisata">
@@ -50,6 +51,11 @@
         <div>
             <label for="lokasi">Lokasi :</label><br>
             <input type="text" id="lokasi" name="lokasi">
+        </div>
+        <br>
+        <div>
+            <label for="gambarwisata">Foto Wisata :</label><br>
+            <input type="file" id="gambarwisata" name="gambarwisata">
         </div>
         <br>
         <button type="submit">Tambahkan Wisata</button>

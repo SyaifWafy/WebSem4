@@ -5,7 +5,7 @@
     <title>Jember Wonder - Tambah Event</title>
 </head>
 <body>
-<h2>Tambah Event Baru</h2>
+<h2>Tambah Event</h2>
 <form action="{{ route('tambahevent') }}" method="POST">
     @csrf
     <div>
@@ -46,7 +46,7 @@
         <input type="hidden" id="username_admin" name="username_admin" value="Admin">
     </div>
     <div>
-        <button type="submit">Tambah</button>
+        <button type="submit">Tambahkan Event</button>
     </div>
 </form>
 <br>
