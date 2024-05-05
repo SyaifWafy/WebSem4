@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -11,7 +10,10 @@ use App\Http\Controllers\WisataController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/index', [IndexController::class, 'showIndex'])->name('index');
+Route::get('/', function () {
+    return view('index');
+});
+Route::get('/', [IndexController::class, 'showIndex'])->name('index');
 
 Route::get('/registercustomer', [RegisterController::class, 'showRegistrationFormCus'])->name('registercus');
 Route::post('/tambah-customer', [RegisterController::class, 'tambahCustomer'])->name('tambahCustomer');
