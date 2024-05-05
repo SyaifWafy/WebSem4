@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JemberWonder - Wisata Customer</title>
+    <title>JemberWonder - Hasil Pencarian Wisata</title>
     <style>
         .center {
             text-align: center;
@@ -23,16 +23,10 @@
     </style>
 </head>
 <body>
-    <h1>JemberWonder</h1>
-    <a href="{{ route('dashboardcustomer') }}">Dashboard</a>
-    <a href="{{ route('wisatacustomer') }}">Wisata</a>
-    <a href="{{ route('eventcustomer') }}">Event</a>
-    <a href="{{ route('masukancustomer') }}">Masukan</a>
-    <br>
-    <br>
+    <h1>Hasil Pencarian Wisata</h1>
     <div class="center">
         <form action="{{ route('cariwisatacus') }}" method="GET">
-            <input type="text" name="keyword" placeholder="Cari Wisata">
+            <input type="text" id="searchInput" name="keyword" placeholder="Cari Wisata" value="{{ old('keyword') }}">
             <button type="submit" class="btn-primary">Cari</button>
         </form>
         @if(session('error'))
@@ -40,7 +34,6 @@
                 {{ session('error') }}
             </div>
         @endif
-        <br>
         <ul>
             @foreach($wisatas as $wisata)
             <li>
@@ -49,17 +42,6 @@
             @endforeach
         </ul>
     </div>
-    <br>
-    <form id="logoutForm" action="{{ route('logoutcus') }}" method="POST">
-        @csrf
-        <button type="button" onclick="confirmLogout()">Logout</button>
-    </form>
-    <script>
-        function confirmLogout() {
-            if (confirm('Apakah Anda yakin untuk logout?')) {
-                document.getElementById('logoutForm').submit();
-            }
-        }
-    </script>
+<a href="{{ route('wisatacustomer') }}">Kembali</a>
 </body>
 </html>

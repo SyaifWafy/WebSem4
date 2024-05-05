@@ -7,6 +7,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LuppassController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\WisataController;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/index', [IndexController::class, 'showIndex'])->name('index');
@@ -64,4 +66,6 @@ Route::get('/customer/form-masukan', [CustomerController::class, 'showFormMasuka
 Route::get('/customer/detail-masukan/{kd_masukan}', [CustomerController::class, 'showDetailMasukanCustomer'])->name('detailmasukancustomer');
 Route::post('/customer/tambah-masukan', [CustomerController::class, 'tambahMasukan'])->name('tambahmasukan');
 
+Route::get('/customer/cariwisatacus', [WisataController::class, 'cariwisatacus'])->name('cariwisatacus');
+Route::get('/customer/carieventcus', [EventController::class, 'carieventcus'])->name('carieventcus');
 

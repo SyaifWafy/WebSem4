@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JemberWonder - Event Customer</title>
+    <title>JemberWonder - Hasil Pencarian Event</title>
     <style>
         .center {
             text-align: center;
@@ -20,19 +20,10 @@
             background-color: #0069d9;
             border-color: #0062cc;
         }
-        .event-item {
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
-    <h1>JemberWonder</h1>
-    <a href="{{ route('dashboardcustomer') }}">Dashboard</a>
-    <a href="{{ route('wisatacustomer') }}">Wisata</a>
-    <a href="{{ route('eventcustomer') }}">Event</a>
-    <a href="{{ route('masukancustomer') }}">Masukan</a>
-    <br>
-    <br>
+    <h1>Hasil Pencarian Event</h1>
     <div class="center">
         <form action="{{ route('carieventcus') }}" method="GET">
             <input type="text" name="keyword" placeholder="Cari Event">
@@ -43,28 +34,14 @@
                 {{ session('error') }}
             </div>
         @endif
-        <br>
         <ul>
             @foreach($events as $event)
-                <li>
-                    <div class="event-item">
-                        <a href="{{ route('detailEventCustomer', $event->kd_event) }}">{{ $event->judul }}</a>
-                    </div>
-                </li>
+            <li>
+                <a href="{{ route('detailEventCustomer', $event->kd_event) }}">{{ $event->judul }}</a>
+            </li>
             @endforeach
         </ul>
     </div>
-    <br>
-    <form id="logoutForm" action="{{ route('logoutcus') }}" method="POST">
-        @csrf
-        <button type="button" onclick="confirmLogout()">Logout</button>
-    </form>
-    <script>
-        function confirmLogout() {
-            if (confirm('Apakah Anda yakin untuk logout?')) {
-                document.getElementById('logoutForm').submit();
-            }
-        }
-    </script>
+<a href="{{ route('eventcustomer') }}">Kembali</a>
 </body>
 </html>
