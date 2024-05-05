@@ -36,6 +36,16 @@
     <button onclick="window.location.href='{{ route('formeventadmin') }}'" class="btn btn-primary">Tambah Event</button>
     <br>
     <div class="center">
+        <form action="{{ route('carieventadmin') }}" method="GET">
+            <input type="text" name="keyword" placeholder="Cari Event">
+            <button type="submit" class="btn-primary">Cari</button>
+        </form>
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        <br>
         <ul>
             @foreach($events as $event)
                 <li>

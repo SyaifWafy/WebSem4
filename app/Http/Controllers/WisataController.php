@@ -16,4 +16,13 @@ class WisataController extends Controller
         }
         return view('customer.hasilcariwisatacus', ['wisatas' => $wisatas]);
     }
+    public function cariwisataadmin(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $wisatas = Wisata::where('nama_wisata', 'like', "%$keyword%")->get();
+        if ($wisatas->isEmpty()) {
+            return redirect()->back()->with('error', 'Wisata tidak ditemukan.');
+        }
+        return view('admin.hasilcariwisataadmin', ['wisatas' => $wisatas]);
+    }
 }
