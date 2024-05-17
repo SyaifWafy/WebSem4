@@ -54,8 +54,18 @@
             <textarea name="keterangan" id="keterangan" class="form-control" rows="3" required>{{ $wisata->keterangan }}</textarea>
         </div>
         <div class="form-group">
-            <label for="kategori">Kategori</label>
-            <input type="text" name="kategori" id="kategori" class="form-control" value="{{ $wisata->kategori }}" required>
+            <label for="kategori">Kategori :</label><br>
+            <select name="kategori" id="kategori">
+                <option value="Pantai">Pantai</option>
+                <option value="Laut/Terumbu Karang">Laut/Terumbu Karang</option>
+                <option value="Gunung">Gunung</option>
+                <option value="Bukit">Bukit</option>
+                <option value="Hutan">Hutan</option>
+                <option value="Goa">Goa</option>
+                <option value="Danau">Danau</option>
+                <option value="Sungai">Sungai</option>
+                <option value="Pedesaan">Pedesaan</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="lokasi">Lokasi</label>

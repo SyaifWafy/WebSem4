@@ -40,7 +40,17 @@
         <br>
         <div>
             <label for="kategori">Kategori :</label><br>
-            <input type="text" id="kategori" name="kategori">
+            <select name="kategori" id="kategori">
+                <option value="Pantai">Pantai</option>
+                <option value="Laut/Terumbu Karang">Laut/Terumbu Karang</option>
+                <option value="Gunung">Gunung</option>
+                <option value="Bukit">Bukit</option>
+                <option value="Hutan">Hutan</option>
+                <option value="Goa">Goa</option>
+                <option value="Danau">Danau</option>
+                <option value="Sungai">Sungai</option>
+                <option value="Pedesaan">Pedesaan</option>
+            </select>
         </div>
         <br>
         <div>
