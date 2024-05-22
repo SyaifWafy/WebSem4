@@ -11,6 +11,7 @@
     <a href="{{ route('wisataadmin') }}">Wisata</a>
     <a href="{{ route('eventadmin') }}">Event</a>
     <a href="{{ route('masukanadmin') }}">Masukan</a>
+    <a href="{{ route('registeradmin') }}">Daftarkan Admin</a>
     <br>
     <br>
     <div class="center">
