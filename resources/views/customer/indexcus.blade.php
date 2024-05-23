@@ -5,112 +5,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JemberWonder - Masuk Customer</title>
     <style>
-        .center {
-            text-align: center;
+        body {
+            font-family: 'poppins';
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: #f0f0f0;
+            text-decoration: none;
         }
-        .border {
-            border: 1px solid #ccc;
-            box-sizing: border-box;
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/img/gunung_gambir.jpeg') no-repeat center center fixed; 
+            background-size: cover;
+            filter: blur(10px);
+            z-index: -1;
         }
-        .rounded {
+        .container {
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            height: 350px;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            z-index: 1;
+            display: flex
         }
-        .px-3 {
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
+
+        .left {
+            padding-right: 20px ;
         }
-        .py-3 {
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
+
+        .right {
+            display: flex;
+            flex-direction: column;
         }
-        .form-control {
-            padding: 0.375rem 0.75rem;
-            font-size: 1rem;
-            line-height: 1.5;
+
+        .img-green{
+            display: block;
+            border-radius: 2px;
+            width: 80vh;
+            height: auto;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tabs a {
+            text-decoration: none;
             color: black;
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid #ced4da;
-            border-radius: 0.25rem;
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background: #f9f9f9;
+            margin: 0 5px;
+        }
+        .tabs a.active {
+            background: #007bff;
+            color: white;
+            border-bottom: 1px solid white;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column; 
+            align-items: center; /* Center items horizontally */
+            width: 100%;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
         .btn-primary {
-            color: #fff;
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            background-color: #007bff;
-            border-color: #007bff;
-            border-radius: 0.25rem;
+            background: white;
+            color: black;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 30%;
+            border: 2px solid black;
+            justify-content: center;
+            text-align: center;
         }
         .btn-primary:hover {
-            color: #fff;
-            background-color: #0069d9;
-            border-color: #0062cc;
+            background: #0056b3;
+        }
+        .lupa {
+            white-space: nowrap;
+            color: #000000;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 180px;
+            font-size: 14px; /* Add this line to set the font size */
+        }
+
+        .daftar {
+            color: #000000;
+            text-decoration: none;
+            display: flex;
+            font-size: 14px;
+            height: auto;
+            justify-content: center; /* Centers content horizontally */
+            align-items: center;    /* Centers content vertically */
+        }
+
+        .segeraDaftar {
+            text-decoration: none;
+            color: #000000;
+            padding-left: 2px;   
+            font-weight: bold;
+        }
+
+        .kembali {
+            text-decoration: none;
+            color: #000000;
+            margin: 10px;
         }
     </style>
 </head>
-<body class="center">
-    <div class="w-50 border rounded px-3 py-3 mx-auto">
-        <br>
-        <a href="{{ route('indexcus') }}">Customer</a>
-        <a href="{{ route('indexadmin') }}">Admin</a>
-        <br>
-        <h1>Masuk Customer</h1>
-        <form method="POST" action="{{ route('loginCus') }}">
-            @csrf
-            @if ($errors->any())
-                <script>
-                    window.onload = function() {
-                        alert("{{ $errors->first() }}");
-                    };
-                </script>
-            @endif
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <br>
-                <input type="text" name="username_cus" placeholder="Username" value="{{ old('username_cus') }}" class="form-control">
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <div class="left">
+            <img class="img-green" src="/img/gunung_gambir.jpeg" alt="Pesona Gunung Gambir">
+        </div>
+        <div class="right">
+            <div class="tabs">
+                <a href="#" class="active">Customer</a>
+                <a href="{{ route('indexadmin') }}">Admin</a>
             </div>
-            <br>
-            <div class="mb-3">
-                <label for="password-container" class="form-label">Password</label>
-                <br>
+            <form method="POST" action="{{ route('loginCus') }}">
+                @csrf
+                @if ($errors->any())
+                    <script>
+                        window.onload = function() {
+                            alert("{{ $errors->first() }}");
+                        };
+                    </script>
+                @endif
+                <input type="text" name="username_cus" placeholder="Username" value="{{ old('username_cus') }}" class="form-control">
                 <input type="password" name="pw_cus" placeholder="Password" class="form-control password-input">
                 <button type="button" class="toggle-password btn btn-outline-primary">Show</button>
-            </div>
-            <a href="{{ route('luppasscus') }}">Lupa Password?</a>
-            <br>
-            <br>
-            <div class="mb-3 d-grid">
-                <button type="submit" class="btn btn-primary">Masuk</button>
-            </div>
-            <br>
-            <div class="mb-3">
-                <a>Tidak memiliki akun? </a>
-                <a href="{{ route('registercus') }}">Segera daftar di sini.</a>
-                <br>
-                <br>
-                <a href="{{ route('index') }}">Kembali</a>
-            </div>
-        </form>
+                <a href="{{ route('luppasscus') }}" class="lupa">Lupa Password?</a>
+                <p class="daftar">Tidak memiliki akun? <a href="{{ route('registercus') }}" class="segeraDaftar">Segera daftar di sini.</a></p>
+                <button type="submit" class="btn-primary">Masuk</button>
+                <a href="{{ route('index') }}" class="kembali">Kembali</a>
+            </form>
+        </div>
     </div>
-    <footer class="center">
-        &copy; JemberWonder
-    </footer>
     <script>
-        const togglePasswordBtns = document.querySelectorAll('.toggle-password');
-        togglePasswordBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const passwordInput = btn.parentElement.querySelector('.password-input');
-                if (passwordInput.type === 'password') {
-                    passwordInput.type = 'text';
-                    btn.textContent = 'Hide';
-                } else {
-                    passwordInput.type = 'password';
-                    btn.textContent = 'Show';
-                }
-            });
+        document.querySelector('.toggle-password').addEventListener('click', function() {
+            const passwordInput = document.querySelector('.password-input');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                this.textContent = 'Hide';
+            } else {
+                passwordInput.type = 'password';
+                this.textContent = 'Show';
+            }
         });
     </script>
 </body>
