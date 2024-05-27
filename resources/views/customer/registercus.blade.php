@@ -5,99 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JemberWonder - Daftar Customer</title>
     <style>
-        .center {
-            text-align: center;
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: #f0f0f0;
+            text-decoration: none;
         }
-        .border {
-            border: 1px solid #ccc;
-            box-sizing: border-box;
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/img/Teluk_love.jpeg') no-repeat center center fixed; 
+            background-size: cover;
+            filter: blur(10px);
+            z-index: -1;
         }
-        .rounded {
+        .container {
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            width: 100%;
+            padding: 20px;
+            display: flex;
         }
-        .px-3 {
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
+        .left {
+            padding-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .py-3 {
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
+        .right {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .img-green {
+            border-radius: 2px;
+            width: 80vh;
+            height: auto;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tabs a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background: #f9f9f9;
+            margin: 0 5px;
+        }
+        .tabs a.active {
+            background: #007bff;
+            color: white;
+            border-bottom: 1px solid white;
+        }
+        form {
+            display: flex;
+            flex-direction: column; 
+            width: 95%;
+        }
+        .form-group {
+            margin-bottom: 15px;
         }
         .form-control {
-            padding: 0.375rem 0.75rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            color: black;
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid #ced4da;
-            border-radius: 0.25rem;
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
         .btn-primary {
-            color: #fff;
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            background-color: #007bff;
-            border-color: #007bff;
-            border-radius: 0.25rem;
+            background: white;
+            color: black;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 30%;
+            border: 2px solid black;
+            text-align: center;
+            margin: 20px auto 0 auto; /* Center the button */
+            display: block; /* Ensure it's a block element */
         }
         .btn-primary:hover {
-            color: #fff;
-            background-color: #0069d9;
-            border-color: #0062cc;
+            background: #007bff;
+            color: white;
+        }
+        .kembali {
+            text-decoration: none;
+            color: #000000;
+            margin: 10px;
+            text-align: center;
+        }
+        .password-container, .password-confirm-container {
+            display: flex;
+            align-items: center;
+        }
+        .password-container button, .password-confirm-container button {
+            margin-left: 10px;
         }
     </style>
 </head>
-<body class="center">
-    <div class="w-50 border rounded px-3 py-3 mx-auto">
-        <h1>Customer</h1>
-        <h1>Daftar</h1>
-        <form action="/tambah-customer" method="POST">
-            @csrf
-            @if ($errors->any())
-                <script>
-                    window.onload = function() {
-                        alert("{{ $errors->first() }}");
-                    };
-                </script>
-            @endif
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <br>
-                <input type="username_cus" name="username_cus" class="form-control">
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <div class="left">
+            <img class="img-green" src="/img/Teluk_love.jpeg" alt="Pesona Gunung Gambir">
+        </div>
+        <div class="right">
+            <div class="tabs">
+                <a href="#" class="active">Customer</a>
             </div>
-            <br>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <br>
-                <div class="password-container">
-                    <input type="password" name="pw_cus" class="form-control password-input">
-                    <button type="button" class="toggle-password">Show</button>
+            <form action="/tambah-customer" method="POST">
+                @csrf
+                @if ($errors->any())
+                    <script>
+                        window.onload = function() {
+                            alert("{{ $errors->first() }}");
+                        };
+                    </script>
+                @endif
+                <div class="form-group">
+                    <input type="text" name="username_cus" placeholder="Username" class="form-control">
                 </div>
-            </div>
-            <br>
-            <div class="mb-3">
-                <label for="password_confirm" class="form-label">Konfirmasi Password</label>
-                <br>
-                <div class="password-confirm-container">
-                    <input type="password" name="password_confirm" class="form-control password-input" placeholder="Masukkan kembali password anda">
-                    <button type="button" class="toggle-password">Show</button>
+                <div class="form-group password-container">
+                    <input type="password" name="pw_cus" placeholder="Password" class="form-control password-input">
+                    <button type="button" class="toggle-password btn btn-outline-primary">Show</button>
                 </div>
-            </div>
-            <br>
-            <div class="mb-3">
-                <label for="fullname" class="form-label">Nama Lengkap</label>
-                <br>
-                <input type="fullname_cus" name="fullname_cus" class="form-control">
-            </div>
-            <br>
-            <div class="mb-3">
-                <label for="pertanyaan" class="form-label">Pertanyaan</label>
-                <br>
-                <div class="mb-3">
+                <div class="form-group password-confirm-container">
+                    <input type="password" name="password_confirm" class="form-control password-input" placeholder="Konfirmasi Password">
+                    <button type="button" class="toggle-password btn btn-outline-primary">Show</button>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="fullname_cus" placeholder="Nama Lengkap" class="form-control">
+                </div>
+                <div class="form-group">
                     <select name="pertanyaan" class="form-control">
                         <option disabled selected>Pilih Pertanyaan</option>
                         <option value="Apa makanan favoritmu?">Apa makanan favoritmu?</option>
@@ -107,31 +161,18 @@
                         <option value="Dimana kota lahirmu?">Dimana kota lahirmu?</option>
                     </select>
                 </div>
-            </div>
-            <br>
-            <div class="mb-3">
-                <label for="jawaban" class="form-label">Jawaban</label>
-                <br>
-                <input type="jawaban" name="jawaban" class="form-control" placeholder="Perhatikan huruf kapitalnya...">
-            </div>
-            <br>
-            <div class="mb-3 d-grid">
-                <button name="submit" type="submit" class="btn btn-primary">Daftar</button>
-            </div>
-            <br>
-            <div class="mb-3">
-                <a href="{{ ('logincustomer') }}">Kembali ke login</a>
-            </div>
-        </form>
+                <div class="form-group">
+                    <input type="text" name="jawaban" placeholder="Jawaban" class="form-control">
+                </div>
+                <button type="submit" class="btn-primary">Daftar</button>
+                <a href="{{ ('logincustomer') }}" class="kembali">Kembali ke login</a>
+            </form>
+        </div>
     </div>
-    <footer class="center">
-        &copy; JemberWonder
-    </footer>
     <script>
-        const togglePasswordBtns = document.querySelectorAll('.toggle-password');
-        togglePasswordBtns.forEach(btn => {
+        document.querySelectorAll('.toggle-password').forEach(btn => {
             btn.addEventListener('click', () => {
-                const passwordInput = btn.parentElement.querySelector('.password-input');
+                const passwordInput = btn.previousElementSibling;
                 if (passwordInput.type === 'password') {
                     passwordInput.type = 'text';
                     btn.textContent = 'Hide';
