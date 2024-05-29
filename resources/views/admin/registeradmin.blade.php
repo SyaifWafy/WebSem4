@@ -27,6 +27,16 @@
             filter: blur(10px);
             z-index: -1;
         }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+        }
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
         .container {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
@@ -50,7 +60,7 @@
         .img-green {
             border-radius: 2px;
             width: 80vh;
-            height: auto;
+            height: 70vh;
         }
         .tabs {
             display: flex;
@@ -120,6 +130,9 @@
 </head>
 <body>
     <div class="background"></div>
+    <div class="logo">
+        <img src="/img/jwlogo.png" alt="Logo">
+    </div>
     <div class="container">
         <div class="left">
             <img class="img-green" src="/img/watu_ulo.jpg" alt="Pesona Gunung Gambir">

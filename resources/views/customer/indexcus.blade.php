@@ -27,6 +27,16 @@
             filter: blur(10px);
             z-index: -1;
         }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+        }
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
         .container {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
@@ -37,25 +47,21 @@
             padding: 20px;
             text-align: center;
             z-index: 1;
-            display: flex
+            display: flex;
         }
-
         .left {
             padding-right: 20px ;
         }
-
         .right {
             display: flex;
             flex-direction: column;
         }
-
-        .img-green{
+        .img-green {
             display: block;
             border-radius: 2px;
             width: 80vh;
             height: auto;
         }
-
         .tabs {
             display: flex;
             justify-content: center;
@@ -75,14 +81,12 @@
             color: white;
             border-bottom: 1px solid white;
         }
-
-        form{
+        form {
             display: flex;
             flex-direction: column; 
             align-items: center; /* Center items horizontally */
             width: 100%;
         }
-
         .form-control {
             width: 100%;
             padding: 10px;
@@ -103,7 +107,7 @@
             text-align: center;
         }
         .btn-primary:hover {
-            background: #0056b3;
+            background: #007bff;
         }
         .lupa {
             white-space: nowrap;
@@ -115,7 +119,6 @@
             margin-left: 180px;
             font-size: 14px; /* Add this line to set the font size */
         }
-
         .daftar {
             color: #000000;
             text-decoration: none;
@@ -125,14 +128,12 @@
             justify-content: center; /* Centers content horizontally */
             align-items: center;    /* Centers content vertically */
         }
-
         .segeraDaftar {
             text-decoration: none;
             color: #000000;
             padding-left: 2px;   
             font-weight: bold;
         }
-
         .kembali {
             text-decoration: none;
             color: #000000;
@@ -142,6 +143,9 @@
 </head>
 <body>
     <div class="background"></div>
+    <div class="logo">
+        <img src="/img/jwlogo.png" alt="Logo">
+    </div>
     <div class="container">
         <div class="left">
             <img class="img-green" src="/img/gunung_gambir.jpeg" alt="Pesona Gunung Gambir">

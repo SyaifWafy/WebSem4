@@ -22,10 +22,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('/img/gunung_gambir.jpeg') no-repeat center center fixed;
+            background: url('/img/watu_ulo.jpg') no-repeat center center fixed;
             background-size: cover;
             filter: blur(10px);
             z-index: -1;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+        }
+        .logo img {
+            height: 50px;
+            width: auto;
         }
         .container {
             background: rgba(255, 255, 255, 0.9);
@@ -49,8 +59,8 @@
         .img-green {
             display: block;
             border-radius: 2px;
-            width: 80vh;
-            height: auto;
+            width: 70vh;
+            height: ;
         }
         .tabs {
             display: flex;
@@ -96,7 +106,7 @@
             text-align: center;
         }
         .btn-primary:hover {
-            background: #0056b3;
+            background: #007bff;
             color: white;
         }
         .lupa {
@@ -132,9 +142,12 @@
 </head>
 <body>
     <div class="background"></div>
+    <div class="logo">
+        <img src="/img/jwlogo.png" alt="Logo">
+    </div>
     <div class="container">
         <div class="left">
-            <img class="img-green" src="/img/gunung_gambir.jpeg" alt="Pesona Gunung Gambir">
+            <img class="img-green" src="/img/watu_ulo.jpg" alt="Pesona Gunung Gambir">
         </div>
         <div class="right">
             <div class="tabs">
