@@ -65,6 +65,7 @@
                 <option value="Danau">Danau</option>
                 <option value="Sungai">Sungai</option>
                 <option value="Pedesaan">Pedesaan</option>
+                <option value="Bangunan">Bangunan</option>
             </select>
         </div>
         <div class="form-group">
