@@ -6,7 +6,7 @@
     <title>JemberWonder - Daftar Admin</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: sans-serif;
             margin: 0;
             height: 100vh;
             display: flex;

@@ -6,7 +6,7 @@
     <title>JemberWonder - Masuk Customer</title>
     <style>
         body {
-            font-family: 'poppins';
+            font-family: sans-serif;
             margin: 0;
             height: 100vh;
             display: flex;
