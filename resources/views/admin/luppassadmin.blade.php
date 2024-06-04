@@ -22,7 +22,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('/img/watu_ulo.jpg') no-repeat center center fixed; 
+            background: url('/img/watu_ulo.jpg') no-repeat center center fixed;
             background-size: cover;
             filter: blur(10px);
             z-index: -1;
@@ -83,7 +83,7 @@
         }
         form {
             display: flex;
-            flex-direction: column; 
+            flex-direction: column;
             width: 95%;
         }
         .form-group {
@@ -103,7 +103,7 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            width: 30%;
+            width: 40%;
             border: 2px solid black;
             text-align: center;
             margin: 20px auto 0 auto; /* Center the button */
@@ -112,12 +112,16 @@
         .btn-primary:hover {
             background: #007bff;
             color: white;
+            border: 2px solid white;
         }
         .kembali {
             text-decoration: none;
             color: #000000;
             margin: 10px;
             text-align: center;
+        }
+        .kembali:hover {
+        color: #999999;
         }
         .password-container, .password-confirm-container {
             display: flex;
@@ -139,7 +143,7 @@
         </div>
         <div class="right">
             <div class="tabs">
-                <a href="#" class="active">Admin</a>
+                <a class="active">Admin</a>
             </div>
             <form action="{{ route('admin.lupaPasswordAdmin') }}" method="POST">
                 @csrf

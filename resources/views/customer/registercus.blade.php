@@ -22,7 +22,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('/img/Teluk_love.jpeg') no-repeat center center fixed; 
+            background: url('/img/Teluk_love.jpeg') no-repeat center center fixed;
             background-size: cover;
             filter: blur(10px);
             z-index: -1;
@@ -83,7 +83,7 @@
         }
         form {
             display: flex;
-            flex-direction: column; 
+            flex-direction: column;
             width: 95%;
         }
         .form-group {
@@ -112,12 +112,16 @@
         .btn-primary:hover {
             background: #007bff;
             color: white;
+            border: 2px solid white;
         }
         .kembali {
             text-decoration: none;
             color: #000000;
             margin: 10px;
             text-align: center;
+        }
+        .kembali:hover {
+        color: #999999;
         }
         .password-container, .password-confirm-container {
             display: flex;
@@ -139,7 +143,7 @@
         </div>
         <div class="right">
             <div class="tabs">
-                <a href="#" class="active">Customer</a>
+                <a class="active">Customer</a>
             </div>
             <form action="/tambah-customer" method="POST">
                 @csrf

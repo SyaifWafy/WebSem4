@@ -41,7 +41,7 @@
             background: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 900px;
+            max-width: 920px;
             height: 350px;
             width: 100%;
             padding: 20px;
@@ -108,6 +108,7 @@
         .btn-primary:hover {
             background: #007bff;
             color: white;
+            border: 2px solid white;
         }
         .lupa {
             white-space: nowrap;
@@ -118,6 +119,9 @@
             margin-bottom: 10px;
             margin-left: 180px;
             font-size: 14px;
+        }
+        .lupa:hover {
+        color: #007bff;
         }
         .daftar {
             color: #000000;
@@ -137,6 +141,9 @@
             text-decoration: none;
             color: #000000;
             margin: 10px;
+        }
+        .kembali:hover {
+        color: #999999;
         }
     </style>
 </head>
@@ -167,7 +174,8 @@
                 <input type="password" name="pw_admin" placeholder="Password" class="form-control password-input">
                 <button type="button" class="toggle-password btn btn-outline-primary">Show</button>
                 <a href="{{ route('luppassadmin') }}" class="lupa">Lupa Password?</a>
-                <p class="daftar">Tidak memiliki akun admin? <span class="segeraDaftar">Segera konfirmasi kepada admin lain.</span></p>
+                <p class="daftar">Tidak memiliki akun admin?
+                <span class="segeraDaftar">Segera konfirmasi kepada admin lain.</span></p>
                 <button type="submit" class="btn-primary">Masuk</button>
                 <a href="{{ route('index') }}" class="kembali">Kembali</a>
             </form>

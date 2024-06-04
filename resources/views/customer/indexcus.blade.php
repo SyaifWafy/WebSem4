@@ -22,7 +22,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('/img/gunung_gambir.jpeg') no-repeat center center fixed; 
+            background: url('/img/gunung_gambir.jpeg') no-repeat center center fixed;
             background-size: cover;
             filter: blur(10px);
             z-index: -1;
@@ -41,7 +41,7 @@
             background: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 900px;
+            max-width: 920px;
             height: 350px;
             width: 100%;
             padding: 20px;
@@ -83,7 +83,7 @@
         }
         form {
             display: flex;
-            flex-direction: column; 
+            flex-direction: column;
             align-items: center; /* Center items horizontally */
             width: 100%;
         }
@@ -108,6 +108,8 @@
         }
         .btn-primary:hover {
             background: #007bff;
+            color: white;
+            border: 2px solid white;
         }
         .lupa {
             white-space: nowrap;
@@ -118,6 +120,9 @@
             margin-bottom: 10px;
             margin-left: 180px;
             font-size: 14px; /* Add this line to set the font size */
+        }
+        .lupa:hover {
+        color: #007bff;
         }
         .daftar {
             color: #000000;
@@ -131,13 +136,19 @@
         .segeraDaftar {
             text-decoration: none;
             color: #000000;
-            padding-left: 2px;   
+            padding-left: 2px;
             font-weight: bold;
+        }
+        .segeraDaftar:hover {
+        color: #999999;
         }
         .kembali {
             text-decoration: none;
             color: #000000;
             margin: 10px;
+        }
+        .kembali:hover {
+        color: #999999;
         }
     </style>
 </head>
