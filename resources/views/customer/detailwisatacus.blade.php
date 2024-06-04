@@ -80,6 +80,17 @@
             background-color: #0069d9;
             border-color: #0062cc;
         }
+
+        .kembali {
+            text-decoration: none;
+            color: #000000;
+            margin: 10px;
+            text-align: center;
+
+        }
+        .kembali:hover {
+        color: #999999;
+        }
     </style>
 </head>
 
@@ -137,11 +148,11 @@
         @else
             <p>Tidak ada event pada wisata ini.</p>
         @endif
+        <br>
+        <a href="{{ route('wisatacustomer') }}" class="kembali">Kembali ke Daftar Wisata</a>
     </div>
     <br>
     <br>
-
-    {{-- <a href="{{ route('wisatacustomer') }}" class="btn btn-primary">Kembali ke Daftar Wisata</a> --}}
 </body>
 
 </html>

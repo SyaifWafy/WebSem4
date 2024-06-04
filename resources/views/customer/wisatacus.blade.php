@@ -131,7 +131,7 @@
                         <div
                             style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; height: 100%; text-align: left; margin-top: 15px;">
                             <h2 style="font-size: 24px; font-weight: bold;">{{ $wisata->nama_wisata }}</h2>
-                            <p>{{ $wisata->keterangan }}</p>
+                            <p>{{ $wisata->lokasi }}</p>
                         </div>
                         <a href="{{ route('detailWisataCustomer', $wisata->kd_wisata) }}"
                             style="align-self: flex-start; margin-top: auto; padding: 10px 20px; background-color: rgba(255, 255, 255, 0.5); border: 2px solid white; color: white; text-decoration: none; font-weight: bold; border-radius: 25px; display: inline-block; text-align: center;">Kunjungi</a>
