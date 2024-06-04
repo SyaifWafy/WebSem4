@@ -172,8 +172,11 @@ class AdminController extends Controller
             'gambarevent.mimes' => 'Foto event harus dalam format jpeg, png, jpg, atau gif.',
         ]);
         if ($request->hasFile('gambarevent')) {
-            $imageName = time().'.'.$request->gambarevent->getClientOriginalExtension();
-            $request->gambarevent->storeAs('public/img', $imageName);
+            $image = $request->file('gambarevent');
+            if ($image->isValid()) {
+                $imageName = time().'.'.$image->getClientOriginalExtension();
+                $path = $image->storeAs('public/img', $imageName);
+            }
         }
         $wisata = Wisata::where('kd_wisata', $request->kd_wisata)->firstOrFail();
         $event = new Event();
@@ -184,7 +187,8 @@ class AdminController extends Controller
         $event->tempat = $request->tempat;
         $event->kd_wisata = $request->kd_wisata;
         $event->username_admin = 'Admin';
-        $event->gambarevent = $imageName;
+        $event->gambarevent = $path;
+
         $event->save();
         return redirect()->route('eventadmin')->with('success', 'Data event berhasil ditambahkan');
     }

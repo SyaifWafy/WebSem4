@@ -1,13 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JemberWonder - Hasil Pencarian Wisata</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <script href="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <style>
+        body {
+            background: radial-gradient(circle, #4d879c, #79b2b1) !important;
+        }
+
+        .logo img {
+            height: 95px;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        .centered-nav {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            gap: 35px;
+            margin-right: 140px;
+            margin-bottom: 0px;
+            margin-top: -40px;
+        }
+
+        .centered-nav a {
+            text-decoration: none;
+            color: #e2e2e2;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .centered-nav a:hover {
+            color:white
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            padding: 20px;
+            color: white;
+        }
+
+        .images {
+            width: 60%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+        }
+
+        #logoutForm {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 20px;
+            margin-top: -40px;
+        }
+
         .center {
             text-align: center;
         }
+
         .btn-primary {
             color: #fff;
             padding: 0.375rem 0.75rem;
@@ -16,32 +76,78 @@
             border-radius: 0.25rem;
             text-decoration: none;
         }
+
         .btn-primary:hover {
             background-color: #0069d9;
             border-color: #0062cc;
         }
     </style>
 </head>
+
 <body>
-    <h1>Hasil Pencarian Wisata</h1>
-    <div class="center">
-        <form action="{{ route('cariwisatacus') }}" method="GET">
-            <input type="text" id="searchInput" name="keyword" placeholder="Cari Wisata" value="{{ old('keyword') }}">
-            <button type="submit" class="btn-primary">Cari</button>
+    <header>
+        <div class="logo">
+            <img src="{{ asset('img/jwlogo.png') }}" alt="Jember Wonder">
+        </div>
+
+        <nav>
+            <ul class="centered-nav">
+                <li><a href="{{ route('dashboardcustomer') }}">Dashboard</a></li>
+                <li><a href="{{ route('wisatacustomer') }}">Wisata</a></li>
+                <li><a href="{{ route('eventcustomer') }}">Event</a></li>
+                <li><a href="{{ route('masukancustomer') }}">Masukan</a></li>
+            </ul>
+        </nav>
+        <form id="logoutForm" action="{{ route('logoutcus') }}" method="POST">
+            @csrf
+            <button type="button" class="btn btn-danger" onclick="confirmLogout()">Logout</button>
         </form>
-        @if(session('error'))
+    </header>
+    <br>
+    <br>
+    <div class="center">
+        <div class="d-flex justify-content-center">
+            <form action="{{ route('cariwisatacus') }}" method="GET" class="input-group"
+                style="max-width: 400px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); border-radius: 25px;">
+                <input type="text" name="keyword" class="form-control rounded-left" placeholder="Cari Wisata"
+                    aria-label="Cari Wisata" aria-describedby="button-addon2" style="border-right: none;">
+                <div class="input-group-append">
+                    <button class="btn btn-dark rounded-right" type="submit" id="button-addon2">Cari</button>
+                </div>
+            </form>
+        </div>
+        @if (session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
         @endif
-        <ul>
-            @foreach($wisatas as $wisata)
-            <li>
-                <a href="{{ route('detailWisataCustomer', $wisata->kd_wisata) }}">{{ $wisata->nama_wisata }}</a>
-            </li>
-            @endforeach
-        </ul>
+        <br>
+        <div style="display: flex; justify-content: center;">
+            <main style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 75px;">
+                @foreach ($wisatas as $wisata)
+                    <div
+                        style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent), url('{{ Storage::url($wisata->gambarwisata) }}') no-repeat center center / cover; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 385px; width: 330px; padding: 20px; box-sizing: border-box; border-radius: 15px; text-align: center; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+                        <div
+                            style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; height: 100%; text-align: left; margin-top: 15px;">
+                            <h2 style="font-size: 24px; font-weight: bold;">{{ $wisata->nama_wisata }}</h2>
+                            <p>{{ $wisata->keterangan }}</p>
+                        </div>
+                        <a href="{{ route('detailWisataCustomer', $wisata->kd_wisata) }}"
+                            style="align-self: flex-start; margin-top: auto; padding: 10px 20px; background-color: rgba(255, 255, 255, 0.5); border: 2px solid white; color: white; text-decoration: none; font-weight: bold; border-radius: 25px; display: inline-block; text-align: center;">Kunjungi</a>
+                    </div>
+                @endforeach
+            </main>
+        </div>
     </div>
-<a href="{{ route('wisatacustomer') }}">Kembali</a>
+
 </body>
+
+<script>
+    function confirmLogout() {
+        if (confirm('Apakah Anda yakin untuk logout?')) {
+            document.getElementById('logoutForm').submit();
+        }
+    }
+</script>
+
 </html>

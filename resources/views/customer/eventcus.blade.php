@@ -4,10 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JemberWonder - Event Customer</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"> 
     <style>
-        .center {
-            text-align: center;
+         .logo img{
+            height: 95px;
+            margin-left: 10px;
+            margin-top: 10px;
         }
+        .centered-nav{
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            gap: 35px;
+            margin-right: 140px;
+            margin-bottom: 0px;
+            margin-top: -40px;
+        }
+        .centered-nav a{
+            text-decoration: none;
+            color: #e2e2e2;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .centered-nav a:hover{
+            color:rgb( 26,47,230);
+        }
+        #logoutForm {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 20px;
+            margin-top: -40px;
+        }
+
+        
         .btn-primary {
             color: #fff;
             padding: 0.375rem 0.75rem;
@@ -25,12 +55,23 @@
         }
     </style>
 </head>
-<body>
-    <h1>JemberWonder</h1>
-    <a href="{{ route('dashboardcustomer') }}">Dashboard</a>
-    <a href="{{ route('wisatacustomer') }}">Wisata</a>
-    <a href="{{ route('eventcustomer') }}">Event</a>
-    <a href="{{ route('masukancustomer') }}">Masukan</a>
+<header>
+        <div class="logo">
+            <img src="{{ asset('img/jwlogo.png')}}" alt="Jember Wonder">
+        </div>
+<nav>
+    <ul class="centered-nav">
+        <li><a href="{{ route('dashboardcustomer') }}">Dashboard</a></li>
+        <li><a href="{{ route('wisatacustomer') }}">Wisata</a></li>
+        <li><a href="{{ route('eventcustomer') }}">Event</a></li>
+        <li><a href="{{ route('masukancustomer') }}">Masukan</a></li>
+    </ul>
+    </nav>  
+    <form id="logoutForm" action="{{ route('logoutcus') }}" method="POST">
+        @csrf
+        <button type="button" class="btn btn-danger" onclick="confirmLogout()">Logout</button>
+    </form>      
+    </header>
     <br>
     <br>
     <div class="center">
@@ -55,10 +96,6 @@
         </ul>
     </div>
     <br>
-    <form id="logoutForm" action="{{ route('logoutcus') }}" method="POST">
-        @csrf
-        <button type="button" onclick="confirmLogout()">Logout</button>
-    </form>
     <script>
         function confirmLogout() {
             if (confirm('Apakah Anda yakin untuk logout?')) {
