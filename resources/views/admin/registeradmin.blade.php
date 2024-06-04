@@ -139,7 +139,7 @@
         </div>
         <div class="right">
             <div class="tabs">
-                <a href="#" class="active">Admin</a>
+                <a class="active">Admin</a>
             </div>
             <form action="/tambah-admin" method="POST">
                 @csrf
