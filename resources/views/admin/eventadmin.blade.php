@@ -74,6 +74,7 @@
             border-color: #007bff;
             border-radius: 0.25rem;
             text-decoration: none;
+            margin-left: 100px;
         }
 
         .btn-primary:hover {

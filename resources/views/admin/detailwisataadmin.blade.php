@@ -137,7 +137,7 @@
                 <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start;">
                     @foreach ($wisata->event as $event)
                         <div class="list-group-item" style="font-size: 0.6rem; margin-right: 10px; padding: 10px; border-radius:10px; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); background-size: cover;">
-                            <a href="{{ route('detailEventCustomer', $event->kd_event) }}" style="text-decoration: none; color: #fff;">
+                            <a href="{{ route('detailEventAdmin', $event->kd_event) }}" style="text-decoration: none; color: #fff;">
                                 <h5 class="mb-1">{{ $event->judul }}</h5>
                                 <small>{{ $event->tanggal }}</small>
                             </a>

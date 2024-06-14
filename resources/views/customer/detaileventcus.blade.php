@@ -116,8 +116,10 @@
     style="background-image: url('{{ $event->gambarevent ? Storage::url($event->gambarevent) : 'default-image-url' }}'); height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover; position: relative;">
     <div
             style="position: absolute; bottom: 0; left: 0; background: rgba(0, 0, 0, 0); color: #fff; padding: 20px;">
-            <h5>{{ $event->tanggal }}</h5>
+            <h5>📆{{ $event->tanggal }}</h5>
+            <h5>🕘{{ $event->pukul}}</h5>
             <h1>{{ $event->judul }}</h1>
+            <h2>{{$event->wisata->nama_wisata}}</h2>
             <h3>📍{{ $event->tempat }}</h3>
     </div>
     </div>
