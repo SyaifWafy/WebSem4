@@ -25,4 +25,20 @@ class WisataController extends Controller
         }
         return view('admin.hasilcariwisataadmin', ['wisatas' => $wisatas]);
     }
+    public function get_recommended_products(Request $request){
+        $list = Wisata::latest()->get();
+
+                foreach ($list as $item){
+                    
+                    
+                }
+
+                 $data =  [
+                    'total_size' => $list->count(),
+                    'offset' => 0,
+                    'products' => $list
+                ];
+
+         return response()->json($data,200);
+}
 }
