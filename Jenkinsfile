@@ -2,31 +2,44 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Check Branch') {
+            when {
+                expression { env.BRANCH_NAME == 'master' }
+            }
             steps {
-                git branch: 'master', 
-                    url: 'https://github.com/username/repository.git'
+                echo 'Branch saat ini adalah master, lanjutkan pipeline...'
             }
         }
 
         stage('Build') {
+            when {
+                expression { env.BRANCH_NAME == 'master' }
+            }
             steps {
-                script {
-                    docker.image('shippingdocker/php-composer:7.4').inside('-u root') {
-                        sh 'rm -f composer.lock'
-                        sh 'composer install'
-                    }
-                }
+                echo 'Building project...'
+                // Tambahkan perintah build di sini, misalnya:
+                // sh 'mvn clean package'
             }
         }
 
-        stage('Testing') {
+        stage('Test') {
+            when {
+                expression { env.BRANCH_NAME == 'master' }
+            }
             steps {
-                script {
-                    docker.image('ubuntu').inside('-u root') {
-                        sh 'echo "Ini adalah test"'
-                    }
-                }
+                echo 'Running tests...'
+                // Tambahkan perintah test, misalnya:
+                // sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                expression { env.BRANCH_NAME == 'master' }
+            }
+            steps {
+                echo 'Deploying to production...'
+                // Tambahkan perintah deploy di sini
             }
         }
     }
