@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PROD_HOST = '103.109.209.254' // Ganti dengan IP VPS tujuan
+        PROD_HOST = '103.109.209.254'
     }
 
     stages {
@@ -21,8 +21,9 @@ pipeline {
             }
             steps {
                 echo 'Building project...'
-                // Tambahkan perintah build di sini, misalnya:
-                // sh 'mvn clean package'
+                sh './gradlew build'
+                sh 'mvn package'
+                sh 'npm install'
             }
         }
 
@@ -32,8 +33,8 @@ pipeline {
             }
             steps {
                 echo 'Running tests...'
-                // Tambahkan perintah test, misalnya:
-                // sh 'mvn test'
+                sh 'npm test'
+                sh './gradlew test'
             }
         }
 
@@ -43,7 +44,8 @@ pipeline {
             }
             steps {
                 echo 'Deploying to production...'
-                // Tambahkan perintah deploy di sini
+                 sh 'scp target/app.jar 
+                 sh 'docker-compose up -d'
             }
         }
 
