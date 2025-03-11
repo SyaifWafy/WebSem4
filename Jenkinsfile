@@ -38,14 +38,14 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+                stage('Deploy') {
             when {
                 expression { env.BRANCH_NAME == 'master' }
             }
             steps {
                 echo 'Deploying to production...'
-                 sh 'scp target/app.jar 
-                 sh 'docker-compose up -d'
+                sh 'scp target/app.jar ubuntu@$PROD_HOST:/home/ubuntu/app.jar'
+                sh 'ssh ubuntu@$PROD_HOST "docker-compose up -d"'
             }
         }
 
